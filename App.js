@@ -7,6 +7,7 @@ import Web3Auth, {
 	OPENLOGIN_NETWORK,
 	State,
 } from "@web3auth/react-native-sdk";
+import { Provider } from "./Providers/provider";
 
 export default function App() {
 	const web3auth = new Web3Auth(WebBrowser, {
@@ -25,8 +26,10 @@ export default function App() {
 		},
 	});
 	return (
-		<NavigationContainer>
-			<InitialRouter />
-		</NavigationContainer>
+		<Provider>
+			<NavigationContainer>
+				<InitialRouter />
+			</NavigationContainer>
+		</Provider>
 	);
 }
