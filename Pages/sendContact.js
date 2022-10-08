@@ -6,8 +6,9 @@ export default function SendContact() {
 	return (
 		<ScreenWrapper goBack>
 			<Container style={GlobalStyles.pageHeader}>
-				<Text title>Send Contact</Text>
+				<Text title>Send Your Contact</Text>
 			</Container>
+			<Button variant={"contained"}>Share Your Contact</Button>
 		</ScreenWrapper>
 	);
 }

@@ -10,8 +10,9 @@ export default function Transact() {
 			<Container style={GlobalStyles.pageHeader}>
 				<Text title>Waiting To Read Scan</Text>
 			</Container>
-			<Text>Bring your phone close to another phone or an NFC tag</Text>
-
+			<Text>
+				Bring your phone close to another phone or an NFC tag and hold to scan
+			</Text>
 			<ScanImage />
 			<TransactionMenu />
 		</ScreenWrapper>
