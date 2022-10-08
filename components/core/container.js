@@ -87,7 +87,11 @@ export default function Container(props) {
 				style={{
 					width: width,
 					height: props.height ? props.height : null,
-					flex: props.flex ? props.flex : null,
+					flex: props.flex
+						? typeof props.flex === "boolean"
+							? 1
+							: props.flex
+						: null,
 					flexDirection: flexDirection,
 					flexWrap: flexWrap,
 					alignItems: alignItems,
@@ -112,7 +116,8 @@ export default function Container(props) {
 					borderColor: props.borderColor,
 					backgroundColor: backgroundColor,
 					...props.style,
-				}}>
+				}}
+			>
 				{props.children}
 			</TouchableOpacity>
 		);
@@ -122,7 +127,11 @@ export default function Container(props) {
 				style={{
 					width: width,
 					height: props.height ? props.height : null,
-					flex: props.flex ? props.flex : null,
+					flex: props.flex
+						? typeof props.flex === "boolean"
+							? 1
+							: props.flex
+						: null,
 					flexDirection: flexDirection,
 					flexWrap: flexWrap,
 					alignItems: alignItems,
@@ -147,7 +156,8 @@ export default function Container(props) {
 					borderColor: props.borderColor,
 					backgroundColor: backgroundColor,
 					...props.style,
-				}}>
+				}}
+			>
 				{props.children}
 			</View>
 		);

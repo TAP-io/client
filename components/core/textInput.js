@@ -54,9 +54,10 @@ export default function TextInput(props) {
 				alignItems: "center",
 				justifyContent: "space-between",
 				flexWrap: "nowrap",
-			}}>
+			}}
+		>
 			{props.leftAdornment && (
-				<Container column justifyCenter alignCenter flex={0}>
+				<Container column justifyCenter alignCenter>
 					{props.leftAdornment}
 				</Container>
 			)}
@@ -82,7 +83,7 @@ export default function TextInput(props) {
 				onBlur={() => {
 					setFocused(false);
 				}}
-				clearButtonMode="always"
+				clearButtonMode='always'
 				// TODO: ^ make clear mode dynamic
 				ref={props.inputRef}
 				{...props}
