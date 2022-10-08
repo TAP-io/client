@@ -16,20 +16,26 @@ export default function Contacts() {
 					style={{
 						...GlobalStyles.pageHeader,
 						justifyContent: "space-between",
-					}}>
+					}}
+				>
 					<Text title>My Contacts</Text>
-					<TouchableOpacity onPress={() => setModalVisible(true)}>
-						<Icon name="person-add" lg primaryDark />
+					<TouchableOpacity
+						onPress={() => {
+							console.log("HEY");
+							setModalVisible(true);
+						}}
+					>
+						<Icon name='person-add' lg primaryDark />
 					</TouchableOpacity>
 				</Container>
 				<TextInput
 					value={searchField}
-					placeholder="Vitalik"
-					leftAdornment={<Icon name="search" secondary lg marginL={3} />}
+					placeholder='Vitalik'
+					leftAdornment={<Icon name='search' secondary lg marginL={3} />}
 				/>
-				<ContactCard name="sam" />
-				<ContactCard name="marcos" />
-				<ContactCard name="bryan" />
+				<ContactCard name='sam' />
+				<ContactCard name='marcos' />
+				<ContactCard name='bryan' />
 			</ScreenWrapper>
 			<NewContactModal
 				modalVisible={modalVisible}

@@ -10,16 +10,18 @@ export default function AccountModal({ modalVisible, setModalVisible }) {
 	return (
 		<Modal
 			isVisible={modalVisible}
-			animationIn="slideInDown"
+			animationIn='slideInDown'
 			animationOut={"slideOutUp"}
-			style={ModalStyles.modalWrapperTop}>
+			style={ModalStyles.modalWrapperTop}
+		>
 			<Container
 				style={{
 					...ModalStyles.modalTop,
 					paddingTop: 80,
 					paddingHorizontal: 20,
 				}}
-				bg>
+				bg
+			>
 				<Container row justifyStart fullWidth>
 					<Container
 						style={{
@@ -28,7 +30,8 @@ export default function AccountModal({ modalVisible, setModalVisible }) {
 							borderRadius: 50,
 							marginRight: 10,
 							backgroundColor: "gray",
-						}}></Container>
+						}}
+					></Container>
 					<Container>
 						<Text title>Brendan</Text>
 					</Container>
@@ -36,7 +39,10 @@ export default function AccountModal({ modalVisible, setModalVisible }) {
 			</Container>
 			<TouchableOpacity
 				style={ModalStyles.behindModal}
-				onPress={() => setModalVisible(false)}></TouchableOpacity>
+				onPress={() => setModalVisible(false)}
+			>
+				<Text>Close</Text>
+			</TouchableOpacity>
 		</Modal>
 	);
 }

@@ -7,22 +7,15 @@ export default function DeepLinking() {
 		if (data.scheme === "https") {
 			if (data.path) {
 				var params = data.path.split("/");
-				if (params[0] === "post" && params[1] !== "discussion") {
-					navigation.navigate(`focus-post`, {
-						postID: params[1],
+				if (params[0] === "transaction") {
+					navigation.navigate(`transaction`, {
+						toAddress: params[1],
+						amount: params[2],
 					});
-				} else if (params[0] === "post" && params[1] === "discussion") {
-					navigation.navigate(`focus-comment`, {
-						postID: params[2],
-					});
-				} else if (params[0] === "feed") {
-					navigation.navigate(`singleFeed`, {
-						communityID: params[1],
-					});
-				} else if (params[0] === "profile") {
-					navigation.navigate(`profile`, {
-						profileID: params[1],
-						isOrg: params[2],
+				} else if (params[0] === "contact") {
+					navigation.navigate(`new-contact`, {
+						address: params[1],
+						name: params[2],
 					});
 				}
 			} else {
@@ -30,22 +23,16 @@ export default function DeepLinking() {
 			}
 		} else {
 			if (data.path) {
-				if (data.path === "post") {
-					navigation.navigate(`focus-post`, {
-						postID: data.queryParams.postID,
+				if (data.path === "transaction") {
+					// TODO: NAVIGATE TO THE TRANSACT PAGE WITH THE TRANSACTION PARAMS
+					navigation.navigate(`transaction`, {
+						toAddress: data.queryParams.toAddress,
+						amount: data.queryParams.amount,
 					});
-				} else if (data.path === "discussion") {
-					navigation.navigate(`focus-comment`, {
-						postID: data.queryParams.postID,
-					});
-				} else if (data.path === "community") {
-					navigation.navigate(`singleFeed`, {
-						communityID: data.queryParams.communityID,
-					});
-				} else if (data.path === "profile") {
-					navigation.navigate(`profile`, {
-						profileID: data.queryParams.profileID,
-						isOrg: data.queryParams.isOrg,
+				} else if (data.path === "contact") {
+					navigation.navigate(`new-contact`, {
+						address: data.queryParams.address,
+						name: data.queryParams.name,
 					});
 				}
 			} else {
