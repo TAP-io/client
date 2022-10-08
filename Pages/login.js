@@ -7,6 +7,7 @@ export default function Login() {
 		<ScreenWrapper>
 			<Text>Login</Text>
 			<LoginButton />
+			<ConnectWallet />
 		</ScreenWrapper>
 	);
 }
