@@ -15,6 +15,7 @@ export default function ScreenWrapper({
 	bottomLoading,
 	paddingX,
 	paddingY,
+	goBack,
 }) {
 	const [refreshing, setRefreshing] = useState(false);
 
@@ -51,7 +52,7 @@ export default function ScreenWrapper({
 				borderRadius: 10,
 			}}>
 			<SafeAreaView>
-				<Header />
+				<Header goBack={goBack} />
 				<View style={{ alignItems: "center" }}>
 					{loading ? (
 						<LoadingWrapper loading={loading}>
@@ -65,6 +66,7 @@ export default function ScreenWrapper({
 								paddingVertical: paddingY ? paddingY : 6,
 								flex: 1,
 								width: "100%",
+								height: "100%",
 								zIndex: 1,
 							}}>
 							{children}

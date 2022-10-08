@@ -3,7 +3,7 @@ import { Container, Text } from "../core";
 
 export default function ContactCard({ name }) {
 	return (
-		<Container flex row justifyStart paddingX={10} paddingY={5}>
+		<Container row justifyStart fullWidth paddingX={10} paddingY={5}>
 			<Container
 				style={{
 					height: 50,

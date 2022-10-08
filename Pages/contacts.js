@@ -19,7 +19,7 @@ export default function Contacts() {
 					}}>
 					<Text title>My Contacts</Text>
 					<TouchableOpacity onPress={() => setModalVisible(true)}>
-						<Icon name="person-add" lg primary />
+						<Icon name="person-add" lg primaryDark />
 					</TouchableOpacity>
 				</Container>
 				<TextInput

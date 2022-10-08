@@ -1,13 +1,14 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Dim, ModalStyles } from "../../styles/styles";
 import Modal from "react-native-modal";
-import { Container, Text } from "../core";
+import { Container, Text, TextInput } from "../core";
 import { Context } from "../../Providers/provider";
 import Button from "../core/button";
 
 export default function NewContactModal({ modalVisible, setModalVisible }) {
-	const { address, loggedIn } = useContext(Context);
+	const [name, setName] = useState("");
+	const [address, setAddress] = useState("");
 	return (
 		<Modal
 			isVisible={modalVisible}
@@ -21,7 +22,7 @@ export default function NewContactModal({ modalVisible, setModalVisible }) {
 					paddingHorizontal: 20,
 				}}
 				bg>
-				<Container row justifyStart fullWidth>
+				<Container column justifyStart fullWidth>
 					<Container
 						style={{
 							height: 100,
@@ -30,11 +31,23 @@ export default function NewContactModal({ modalVisible, setModalVisible }) {
 							marginRight: 10,
 							backgroundColor: "gray",
 						}}></Container>
-					<Container>
-						<Text title>Brendan</Text>
-					</Container>
+					<TextInput
+						value={name}
+						onChangeText={(newName) => setName(newName)}
+						placeholder="name"
+					/>
+					<TextInput
+						value={address}
+						onChangeText={(newAddress) => setAddress(newAddress)}
+						placeholder="0x00000000000000000000000000000"
+					/>
 				</Container>
-				<Button onPress={() => setModalVisible(false)}>Save Contact</Button>
+				<Button
+					variant="contained"
+					isFullWidth
+					onPress={() => setModalVisible(false)}>
+					Save Contact
+				</Button>
 			</Container>
 		</Modal>
 	);

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import Web3Auth, {
 	LOGIN_PROVIDER,
 	OPENLOGIN_NETWORK,
@@ -15,7 +15,7 @@ import { useNavigation } from "@react-navigation/native";
 import { GlobalStyles } from "../styles/styles";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Container, Icon } from "../components/core";
+import { Container, Icon, Button } from "../components/core";
 
 global.Buffer = global.Buffer || Buffer;
 
@@ -86,13 +86,10 @@ export default function LoginButton() {
 			) : null}
 			{errorMsg !== "" ? <Text>Error: {errorMsg}</Text> : null}
 			<Text>Linking URL: {resolvedRedirectUrl}</Text> */}
-			<Container
-				style={GlobalStyles.button}
-				onPress={login}
-				marginB={5}
-				marginT={10}>
-				<Text style={GlobalStyles.buttonText}>Login With Your Socials</Text>
-			</Container>
+			<Button onPress={login} marginB={5} marginT={10} variant="contained">
+				Login with Socials
+			</Button>
+
 			<Container row justifyCenter>
 				<Icon name="google" type="MaterialCommunity" secondary />
 			</Container>

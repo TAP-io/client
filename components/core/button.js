@@ -78,7 +78,6 @@ export default function Button(props) {
 	// Variants
 	if (props.variant === "contained") {
 		backgroundColor = Colors.primary;
-		textColor = Colors.white;
 		borderWidth = 1;
 		borderColor = Colors.primary;
 	}

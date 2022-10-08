@@ -4,7 +4,7 @@ import Contacts from "../Pages/contacts";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 // File:
 // Default
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
 	SafeAreaView,
 	useWindowDimensions,
@@ -21,6 +21,7 @@ import { Button, Container, Icon, Text } from "../components/core";
 import { CardStyles, Colors } from "../styles/styles";
 import { useNavigation } from "@react-navigation/native";
 import { Context } from "../Providers/provider";
+import TransactionMenu from "../components/transaction/transactMenu";
 // Vars
 const Tab = createBottomTabNavigator();
 
@@ -40,7 +41,12 @@ const style = StyleSheet.create({
 		shadowRadius: 2.5,
 		elevation: 4,
 	},
-	createButton: { borderRadius: 100, marginTop: -20, padding: 2 },
+	createButton: {
+		borderRadius: 100,
+		padding: 2,
+
+		transform: [{ translateY: -20 }],
+	},
 	tabStyle: {
 		flex: 1,
 		height: "100%",
@@ -94,15 +100,16 @@ export default function TabNavigator() {
 				alignCenter
 				style={{
 					backgroundColor: Colors.primary,
-					width: 50,
-					height: 50,
+					width: 60,
+					height: 70,
+					height: 20,
 					...CardStyles.shadow,
 					...style.createButton,
 					borderWidth: focused ? 3 : 0,
 					borderColor: focused ? Colors.primaryAccent : "transparent",
 					position: "relative",
 				}}>
-				<Icon name="contactless-payment" type="MaterialCommunity" lg white />
+				<Icon name="contactless-payment" type="MaterialCommunity" lg />
 			</Container>
 		);
 	}

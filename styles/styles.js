@@ -1,16 +1,13 @@
 import { Dimensions, StyleSheet } from "react-native";
 
 export const Colors = {
-	// primary: "#6840D9",
-	primaryLight: "#8F67FF",
-	primaryDark: "#3C0095",
+	primary: "#BEE6B8",
+	primaryDark: "#4e6e5d",
 	// BLUE
-	accent1Light: "#8ED6FF",
-	accent1Dark: "#0085BE",
-	// PINK
-	accent2Light: "#FF61C0",
-	accent2Dark: "#BC0063",
-	//Others
+	accent: "#266dd3",
+	accent1Light: "#b4cded",
+	accent1Dark: "#0d1821",
+	accent2Light: "#F18FF1",
 	urgent: "#ed7286",
 
 	yellow: "#ffc107",
@@ -18,10 +15,6 @@ export const Colors = {
 	black: "#000",
 	border: "#c4c4c4",
 
-	primary: "#8F67FF",
-	primaryAccent: "#613acf",
-	accent1: "#77C8E2",
-	accent2: "#E44EA0",
 	text: "#000000",
 	textSecondary: "#666666",
 	bg: "#FFFFFF",
@@ -33,12 +26,6 @@ export const Colors = {
 	danger: "#F66363",
 	success: "#5ac771",
 	textLink: "#0645ad",
-	accent1Button: "#77C8E250",
-	accent1ButtonText: "#0085BE",
-	accent2Button: "#D14A9430",
-	accent2ButtonText: "#BC0063",
-	primaryButton: "#8F67FF50",
-	primaryButtonText: "#3C009F",
 };
 export const Dim = {
 	width: Dimensions.get("window").width,
@@ -436,9 +423,7 @@ export const GlobalStyles = StyleSheet.create({
 		paddingVertical: 5,
 		borderRadius: 5,
 	},
-	buttonText: {
-		color: Colors.fg,
-	},
+
 	buttonGroup: {
 		display: "flex",
 		flexDirection: "row",

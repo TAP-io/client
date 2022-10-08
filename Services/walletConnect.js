@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useContext } from "react";
-import { Container, Text } from "../components/core";
+import { Button, Container, Text } from "../components/core";
 import { Context } from "../Providers/provider";
 import { GlobalStyles } from "../styles/styles";
 
@@ -9,14 +9,14 @@ export default function WalletConnect() {
 	const { setLoggedIn } = useContext(Context);
 	return (
 		<Container>
-			<Container
-				style={GlobalStyles.button}
+			<Button
+				variant="contained"
 				onPress={() => {
 					setLoggedIn(true);
 					navigation.navigate("tabs");
 				}}>
-				<Text style={GlobalStyles.buttonText}>Login With Wallet Connect</Text>
-			</Container>
+				Add A Wallet
+			</Button>
 		</Container>
 	);
 }
