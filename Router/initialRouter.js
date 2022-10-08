@@ -11,12 +11,8 @@ export default function InitialRouter() {
 		<Stack.Navigator
 			initialRouteName={loggedIn ? "tabs" : "login"}
 			defaultStatus="open"
-			options={{ headerShown: false }}>
-			<Stack.Screen
-				name="tabs"
-				component={TabNavigator}
-				options={{ headerShown: false }}
-			/>
+			screenOptions={{ headerShown: false }}>
+			<Stack.Screen name="tabs" component={TabNavigator} />
 			<Stack.Screen name="login" component={Login} />
 		</Stack.Navigator>
 	);
