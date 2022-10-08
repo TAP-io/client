@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Text } from "../core";
 
 export default function DeepLinking() {
@@ -61,6 +61,10 @@ export default function DeepLinking() {
 		}
 		Linking.addEventListener("url", handleDeepLink);
 	}
+
+	useEffect(() => {
+		addLinkingListener();
+	}, []);
 
 	return (
 		<Container>
