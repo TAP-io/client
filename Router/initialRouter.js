@@ -1,11 +1,15 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import React, { useContext } from "react";
+import Login from "../Pages/login";
+import { Context } from "../Providers/provider";
 import TabNavigator from "./tabNavigator";
 const Stack = createNativeStackNavigator();
 
 export default function InitialRouter() {
+	const { loggedIn } = useContext(Context);
 	return (
 		<Stack.Navigator
-			initialRouteName="tabs"
+			initialRouteName={loggedIn ? "tabs" : "login"}
 			defaultStatus="open"
 			options={{ headerShown: false }}>
 			<Stack.Screen
@@ -13,6 +17,7 @@ export default function InitialRouter() {
 				component={TabNavigator}
 				options={{ headerShown: false }}
 			/>
+			<Stack.Screen name="login" component={Login} />
 		</Stack.Navigator>
 	);
 }
