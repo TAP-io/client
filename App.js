@@ -7,7 +7,11 @@ import Web3Auth, {
 	OPENLOGIN_NETWORK,
 	State,
 } from "@web3auth/react-native-sdk";
+import WalletConnectProvider from "@walletconnect/react-native-dapp";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import { Provider } from "./Providers/provider";
+import { Platform } from "react-native";
 
 export default function App() {
 	const web3auth = new Web3Auth(WebBrowser, {
@@ -26,10 +30,14 @@ export default function App() {
 		},
 	});
 	return (
+		// <WalletConnectProvider
+		// 	redirectUrl={Platform.OS === "web" ? window.location.origin : "ETHBogota"}
+		// 	storageOptions={{ asyncStorage: AsyncStorage }}>
 		<Provider>
 			<NavigationContainer>
 				<InitialRouter />
 			</NavigationContainer>
 		</Provider>
+		// </WalletConnectProvider>
 	);
 }
