@@ -68,23 +68,23 @@ export const fontSizes = {
 export const Font = {
 	extraLarge: {
 		size: extraLargeSize,
-		family: "OpenSans_700Bold",
+		family: "Ubuntu_700Bold",
 	},
 	title: {
 		size: titleSize,
-		family: "OpenSans_500Medium",
+		family: "Ubuntu_500Medium",
 	},
 	titleBold: {
 		size: titleSize,
-		family: "OpenSans_600SemiBold",
+		family: "Ubuntu_600SemiBold",
 	},
 	subTitle: {
 		size: subTitleSize,
-		family: "OpenSans_400Regular",
+		family: "Ubuntu_400Regular",
 	},
 	subTitleBold: {
 		size: subTitleSize,
-		family: "OpenSans_600SemiBold",
+		family: "Ubuntu_600SemiBold",
 	},
 	body: {
 		size: bodySize,
@@ -100,14 +100,14 @@ export const Font = {
 	},
 	buttonTextSmall: {
 		size: smallSize,
-		family: "OpenSans_500Medium",
+		family: "Ubuntu_500Medium",
 	},
 	buttonText: {
-		family: "OpenSans_600SemiBold",
+		family: "Ubuntu_600SemiBold",
 	},
 	buttonTextLarge: {
 		size: buttonLargeSize,
-		family: "OpenSans_600SemiBold",
+		family: "Ubuntu_600SemiBold",
 	},
 	small: {
 		size: smallSize,
@@ -115,23 +115,23 @@ export const Font = {
 	},
 	smallBold: {
 		size: smallSize,
-		family: "OpenSans_600SemiBold",
+		family: "Ubuntu_600SemiBold",
 	},
 	title_Italic: {
 		size: titleSize,
-		family: "OpenSans_500Medium_Italic",
+		family: "Ubuntu_500Medium_Italic",
 	},
 	titleBold_Italic: {
 		size: titleSize,
-		family: "OpenSans_800ExtraBold_Italic",
+		family: "Ubuntu_800ExtraBold_Italic",
 	},
 	subTitle_Italic: {
 		size: subTitleSize,
-		family: "OpenSans_400Regular_Italic",
+		family: "Ubuntu_400Regular_Italic",
 	},
 	subTitleBold_Italic: {
 		size: subTitleSize,
-		family: "OpenSans_600SemiBold_Italic",
+		family: "Ubuntu_600SemiBold_Italic",
 	},
 	body_Italic: {
 		size: bodySize,
@@ -151,7 +151,7 @@ export const Font = {
 	},
 	smallBold_Italic: {
 		size: smallSize,
-		family: "OpenSans_800ExtraBold_Italic",
+		family: "Ubuntu_800ExtraBold_Italic",
 	},
 	serifTitle: {
 		family: "SourceSerifPro_900Black",
@@ -371,7 +371,7 @@ export const GlobalStyles = StyleSheet.create({
 		flexDirection: "row",
 		justifyContent: "flex-start",
 		alignItems: "center",
-		paddingHorizontal: 20,
+		paddingHorizontal: 5,
 		paddingVertical: 10,
 	},
 	scrollContainer: {
@@ -430,6 +430,15 @@ export const GlobalStyles = StyleSheet.create({
 	},
 
 	//Buttons
+	button: {
+		backgroundColor: Colors.primary,
+		paddingHorizontal: 10,
+		paddingVertical: 5,
+		borderRadius: 5,
+	},
+	buttonText: {
+		color: Colors.fg,
+	},
 	buttonGroup: {
 		display: "flex",
 		flexDirection: "row",

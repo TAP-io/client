@@ -1,14 +1,24 @@
 import React from "react";
-import { ScreenWrapper, Text } from "../components/core";
-import ConnectWallet from "../Services/walletConnect";
+import { Container, ScreenWrapper, Text } from "../components/core";
+import WalletConnect from "../Services/walletConnect";
 import LoginButton from "../Services/web3Auth";
+import { GlobalStyles } from "../styles/styles";
 
 export default function Login() {
 	return (
 		<ScreenWrapper>
-			<Text>Login</Text>
-			<LoginButton />
-			{/* <ConnectWallet /> */}
+			<Container style={GlobalStyles.pageHeader} alignCenter fullWidth>
+				<Text title center>
+					Welcome
+				</Text>
+			</Container>
+			<Container column justifyStart alignCenter>
+				<Text>First Time Using Crypto?</Text>
+
+				<LoginButton />
+				<Text>Have a wallet?</Text>
+				<WalletConnect />
+			</Container>
 		</ScreenWrapper>
 	);
 }

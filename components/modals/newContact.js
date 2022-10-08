@@ -4,18 +4,19 @@ import { Dim, ModalStyles } from "../../styles/styles";
 import Modal from "react-native-modal";
 import { Container, Text } from "../core";
 import { Context } from "../../Providers/provider";
+import Button from "../core/button";
 
-export default function AccountModal({ modalVisible, setModalVisible }) {
+export default function NewContactModal({ modalVisible, setModalVisible }) {
 	const { address, loggedIn } = useContext(Context);
 	return (
 		<Modal
 			isVisible={modalVisible}
-			animationIn="slideInDown"
-			animationOut={"slideOutUp"}
-			style={ModalStyles.modalWrapperTop}>
+			animationIn="slideInUp"
+			animationOut={"slideOutDown"}
+			style={ModalStyles.modalWrapperFullScreen}>
 			<Container
 				style={{
-					...ModalStyles.modalTop,
+					...ModalStyles.modalFull,
 					paddingTop: 80,
 					paddingHorizontal: 20,
 				}}
@@ -33,10 +34,8 @@ export default function AccountModal({ modalVisible, setModalVisible }) {
 						<Text title>Brendan</Text>
 					</Container>
 				</Container>
+				<Button onPress={() => setModalVisible(false)}>Save Contact</Button>
 			</Container>
-			<TouchableOpacity
-				style={ModalStyles.behindModal}
-				onPress={() => setModalVisible(false)}></TouchableOpacity>
 		</Modal>
 	);
 }

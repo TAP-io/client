@@ -1,14 +1,22 @@
-import React from "react";
-import { useWalletConnect } from "@walletconnect/react-native-dapp";
-import { Container } from "../components/core";
-export default function ConnectWallet({}) {
-	const connector = useWalletConnect();
+import { useNavigation } from "@react-navigation/native";
+import React, { useContext } from "react";
+import { Container, Text } from "../components/core";
+import { Context } from "../Providers/provider";
+import { GlobalStyles } from "../styles/styles";
+
+export default function WalletConnect() {
+	const navigation = useNavigation();
+	const { setLoggedIn } = useContext(Context);
 	return (
-		<Container
-			onPress={() => {
-				connector.connect();
-			}}>
-			<Text>Connect Wallet</Text>
+		<Container>
+			<Container
+				style={GlobalStyles.button}
+				onPress={() => {
+					setLoggedIn(true);
+					navigation.navigate("tabs");
+				}}>
+				<Text style={GlobalStyles.buttonText}>Login With Wallet Connect</Text>
+			</Container>
 		</Container>
 	);
 }
