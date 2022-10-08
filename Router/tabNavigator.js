@@ -18,7 +18,7 @@ export default function TabNavigator() {
 				}}
 			/>
 			<Tab.Screen name="transaction-tab" component={TransactionTab} />
-			<Tab.Screen name="contacts-tab" component={Contacts} />
+			<Tab.Screen name="contacts-tab" component={Contacts} options />
 		</Tab.Navigator>
 	);
 }
