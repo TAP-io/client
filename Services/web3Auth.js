@@ -53,8 +53,12 @@ export default function LoginButton() {
 			setKey(state.privKey || "no key");
 
 			setUserInfo(state);
+
+			const provider = ethers.providers.InfuraProvider();
+			// Add the keys back in
 			const signer = new ethers.Wallet(key, provider);
 			console.log({ signer });
+			console.log("=======================================");
 			// await AsyncStorage.setItem("address", state.privKey);
 			// navigation.navigate("tabs");
 		} catch (e) {
