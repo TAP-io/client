@@ -48,3 +48,29 @@ export const readNFCWithCallback = async () => {
 	// 	NfcManager.cancelTechnologyRequest();
 	// }
 };
+export async function readMifare() {
+	let mifarePages = [];
+
+	try {
+		// STEP 1
+		let reqMifare = await NfcManager.requestTechnology(
+			NfcTech.MifareUltralight
+		);
+
+		const readLength = 60;
+		const mifarePagesRead = await Promise.all(
+			[...Array(readLength).keys()].map(async (_, i) => {
+				const pages = await NfcManager.mifareUltralightHandlerAndroid // STEP 2
+					.mifareUltralightReadPages(i * 4); // STEP 3
+				mifarePages.push(pages);
+			})
+		);
+	} catch (ex) {
+		console.warn(ex);
+	} finally {
+		// STEP 4
+		NfcManager.cancelTechnologyRequest();
+	}
+
+	return mifarePages;
+}

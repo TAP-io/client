@@ -12,7 +12,7 @@ import ScanImage from "../components/transaction/scanImage";
 import TransactionMenu from "../components/transaction/transactMenu";
 import { Context } from "../Providers/provider";
 import { Colors, GlobalStyles } from "../styles/styles";
-import { readNFC, readNFCWithCallback } from "../Services/nfc";
+import { readMifare, readNFC, readNFCWithCallback } from "../Services/nfc";
 import { useState } from "react";
 export default function Transact() {
 	const { address, isSpanish } = useContext(Context);
@@ -32,24 +32,28 @@ export default function Transact() {
 			<Button
 				onPress={async () => {
 					Alert.alert("Hey");
-				}}
-			>
+				}}>
 				Reg Alert
 			</Button>
 			<Button
 				onPress={async () => {
 					console.log("pressed");
 					await readNFC();
-				}}
-			>
+				}}>
 				Method 1
+			</Button>
+			<Button
+				onPress={async () => {
+					console.log("pressed");
+					await readMifare();
+				}}>
+				Mifare
 			</Button>
 			<TouchableOpacity
 				onPress={async () => {
 					console.log("pressed");
 					await readNFCWithCallback();
-				}}
-			>
+				}}>
 				<ScanImage />
 			</TouchableOpacity>
 			<TransactionMenu />
