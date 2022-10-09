@@ -7,7 +7,7 @@ import { Context } from "../Providers/provider";
 export default function SelectContact({}) {
 	const { isSpanish } = useContext(Context);
 	const [modalVisible, setModalVisible] = useState(false);
-	const buttonText = isSpanish ? "" : "Send to Contact";
+	const buttonText = isSpanish ? "" : "Enviar a Contacto";
 	return (
 		<>
 			<Button onPress={() => setModalVisible(true)} variant="variant">

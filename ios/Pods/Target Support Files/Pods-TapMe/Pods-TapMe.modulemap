@@ -1,0 +1,6 @@
+module Pods_TapMe {
+  umbrella header "Pods-TapMe-umbrella.h"
+
+  export *
+  module * { export * }
+}

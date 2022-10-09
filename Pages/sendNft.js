@@ -10,81 +10,80 @@ import * as API from "../api/wallet";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function SendNFT() {
-  const { isSpanish } = useContext(Context);
-  const navigation = useNavigation();
-  const [modalVisible, setModalVisible] = useState(false);
-  const [focusedId, setFocusedId] = useState("");
-  const [selected, setSelected] = useState("");
-  function openModal(id) {
-    setFocusedId(id);
-    setModalVisible(true);
-  }
+	const { isSpanish } = useContext(Context);
+	const navigation = useNavigation();
+	const [modalVisible, setModalVisible] = useState(false);
+	const [focusedId, setFocusedId] = useState("");
+	const [selected, setSelected] = useState("");
+	function openModal(id) {
+		setFocusedId(id);
+		setModalVisible(true);
+	}
 
-  const [tokens, setTokens] = useState([]);
-  const [NFTS, setNFTs] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [currencies, setCurrencies] = useState([]);
-  const [address, setAddress] = useState("");
+	const [tokens, setTokens] = useState([]);
+	const [NFTS, setNFTs] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [currencies, setCurrencies] = useState([]);
+	const [address, setAddress] = useState("");
 
-  useEffect(() => {
-    init();
-  }, []);
+	useEffect(() => {
+		init();
+	}, []);
 
-  async function init() {
-    //let add = await AsyncStorage.getItem("@address");
-    let add = "0x8cF84867ba54bd078F678fb276BB1a103efce7d3";
+	async function init() {
+		//let add = await AsyncStorage.getItem("@address");
+		let add = "0x8cF84867ba54bd078F678fb276BB1a103efce7d3";
 
-    setAddress(add);
-    getWalletAssets(add);
-  }
+		setAddress(add);
+		getWalletAssets(add);
+	}
 
-  async function getWalletAssets(add) {
-    //get tokens held
-    let tokens = await API.getTokenBalances(add);
-    let nfts = await API.getAllNfts(add);
+	async function getWalletAssets(add) {
+		//get tokens held
+		let tokens = await API.getTokenBalances(add);
+		let nfts = await API.getAllNfts(add);
 
-    setNFTs(nfts);
-    console.log("========================");
+		setNFTs(nfts);
+		console.log("========================");
 
-    setNFTs(nfts);
-    console.log(nfts);
-    setLoading(false);
-  }
+		setNFTs(nfts);
+		console.log(nfts);
+		setLoading(false);
+	}
 
-  return (
-    <ScreenWrapper goBack>
-      <Container style={GlobalStyles.pageHeader}>
-        <Text title>{isSpanish ? "" : "Send NFT"}</Text>
-      </Container>
-      <Container flex row wrap justifyCenter alignStart>
-        {NFTS.map((item) => {
-          return (
-            <NFTCard
-              item={item}
-              openModal={openModal}
-              selected={selected}
-              setSelected={setSelected}
-            />
-          );
-        })}
-      </Container>
-      {selected !== "" && (
-        <Button
-          marginT={20}
-          variant="contained"
-          isFullWidth
-          onPress={() => {
-            navigation.navigate("awaiting-send");
-          }}
-        >
-          Next
-        </Button>
-      )}
-      <NftModal
-        modalVisible={modalVisible}
-        setModalVisible={setModalVisible}
-        id={focusedId}
-      />
-    </ScreenWrapper>
-  );
+	return (
+		<ScreenWrapper goBack>
+			<Container style={GlobalStyles.pageHeader}>
+				<Text title>{isSpanish ? "" : "Enviar NFT"}</Text>
+			</Container>
+			<Container flex row wrap justifyCenter alignStart>
+				{NFTS.map((item) => {
+					return (
+						<NFTCard
+							item={item}
+							openModal={openModal}
+							selected={selected}
+							setSelected={setSelected}
+						/>
+					);
+				})}
+			</Container>
+			{selected !== "" && (
+				<Button
+					marginT={20}
+					variant="contained"
+					isFullWidth
+					onPress={() => {
+						navigation.navigate("awaiting-send");
+					}}>
+					Next
+				</Button>
+			)}
+			<NftModal
+				modalVisible={modalVisible}
+				setModalVisible={setModalVisible}
+				id={focusedId}
+			/>
+		</ScreenWrapper>
+	);
 }

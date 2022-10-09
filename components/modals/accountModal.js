@@ -61,10 +61,10 @@ export default function AccountModal({ modalVisible, setModalVisible }) {
 				</Container>
 				<Container row justifyCenter marginT={50}>
 					<Button variant="contained" onPress={share}>
-						{isSpanish ? "" : "Share Your Profile"}
+						{isSpanish ? "" : "Comparte tu Perfil"}
 					</Button>
 					<Button variant="danger" onPress={deleteAccount}>
-						{isSpanish ? "" : "Delete Your Profile"}
+						{isSpanish ? "" : "Elimina tu Perfil"}
 					</Button>
 				</Container>
 			</Container>

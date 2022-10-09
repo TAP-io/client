@@ -9,54 +9,52 @@ import { Share } from "react-native";
 import { Context } from "../../Providers/provider";
 
 export default function Login() {
-  const { isSpanish } = useContext(Context);
-  const title = isSpanish ? "" : "Bienvenido a Tap Me";
-  const subTitle = isSpanish ? "" : "¿Listo para Tappear?";
+	const { isSpanish } = useContext(Context);
+	const title = isSpanish ? "" : "Bienvenido a Tap Me";
+	const subTitle = isSpanish ? "" : "¿Listo para Tappear?";
 
-  const line1 = isSpanish ? "" : "¿Nuevo en web3?";
-  const line2 = isSpanish ? "" : "¿Tienes ya una cartera?";
-  let loginWrapper = {
-    position: "absolute",
-    height: Dim.height,
-    width: Dim.width,
-    backgroundColor: Colors.fg,
-    zIndex: 100,
-    paddingTop: 100,
-  };
-  return (
-    <Container
-      style={{
-        ...loginWrapper,
-      }}
-    >
-      <Container
-        style={{
-          backgroundColor: Colors.primaryDark,
-          padding: 10,
-          borderRadius: "50%",
-        }}
-      >
-        <Icon
-          name="contactless-payment"
-          primary
-          type={"MaterialCommunity"}
-          xl
-        />
-      </Container>
-      <Container style={GlobalStyles.pageHeader}>
-        <Text title primaryDark>
-          {title}
-        </Text>
-      </Container>
-      <Text subTitle primaryDark>
-        {subTitle}
-      </Text>
-      <Container paddingT={20} column justifyStart alignCenter>
-        <Text>{line1}</Text>
-        <LoginButton />
-        <Text marginT={30}>{line2}</Text>
-        <WalletConnect />
-      </Container>
-    </Container>
-  );
+	const line1 = isSpanish ? "" : "¿Nuevo en web3?";
+	const line2 = isSpanish ? "" : "¿Tienes ya una cartera?";
+	let loginWrapper = {
+		position: "absolute",
+		height: Dim.height,
+		width: Dim.width,
+		backgroundColor: Colors.fg,
+		zIndex: 100,
+		paddingTop: 100,
+	};
+	return (
+		<Container
+			style={{
+				...loginWrapper,
+			}}>
+			<Container
+				style={{
+					backgroundColor: Colors.primaryDark,
+					padding: 10,
+					borderRadius: "50%",
+				}}>
+				<Icon
+					name="contactless-payment"
+					primary
+					type={"MaterialCommunity"}
+					xl
+				/>
+			</Container>
+			<Container style={GlobalStyles.pageHeader}>
+				<Text title primaryDark>
+					{title}
+				</Text>
+			</Container>
+			<Text subTitle primaryDark>
+				{subTitle}
+			</Text>
+			<Container paddingT={20} column justifyStart alignCenter>
+				<Text>{line1}</Text>
+				<LoginButton />
+				<Text marginT={30}>{line2}</Text>
+				<WalletConnect />
+			</Container>
+		</Container>
+	);
 }

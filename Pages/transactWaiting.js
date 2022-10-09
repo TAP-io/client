@@ -9,10 +9,10 @@ import { Colors, GlobalStyles } from "../styles/styles";
 
 export default function Transact() {
 	const { address, isSpanish } = useContext(Context);
-	const title = isSpanish ? "" : "Waiting to Read Scan";
+	const title = isSpanish ? "" : "Esperando a Leer Tag";
 	const direction = isSpanish
 		? ""
-		: "Bring your phone close to another phone or an NFC tag and hold to scan";
+		: "Acerca tu telefono al otro telefono o al tag NFC y manten presionado para escanear";
 	return (
 		<ScreenWrapper>
 			{/* {address === "" && <Login />} */}

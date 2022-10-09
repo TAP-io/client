@@ -7,9 +7,9 @@ import { GlobalStyles } from "../styles/styles";
 
 export default function Login() {
 	const { isSpanish } = useContext(Context);
-	const title = isSpanish ? "" : "Welcome";
-	const line1 = isSpanish ? "" : "New to web3?";
-	const line2 = isSpanish ? "" : "Have a wallet?";
+	const title = isSpanish ? "" : "Bienveido";
+	const line1 = isSpanish ? "" : "¿Nuevo en web3?";
+	const line2 = isSpanish ? "" : "¿Tienes ya una cartera?";
 	return (
 		<ScreenWrapper>
 			<Container style={GlobalStyles.pageHeader}>
