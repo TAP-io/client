@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { TouchableOpacity, View } from "react-native";
+import { Alert, TouchableOpacity, View } from "react-native";
 import Login from "../components/auth/loginMethods";
 import {
 	Button,
@@ -31,16 +31,25 @@ export default function Transact() {
 			<Text>{direction}</Text>
 			<Button
 				onPress={async () => {
+					Alert.alert("Hey");
+				}}
+			>
+				Reg Alert
+			</Button>
+			<Button
+				onPress={async () => {
 					console.log("pressed");
 					await readNFC();
-				}}>
+				}}
+			>
 				Method 1
 			</Button>
 			<TouchableOpacity
 				onPress={async () => {
 					console.log("pressed");
 					await readNFCWithCallback();
-				}}>
+				}}
+			>
 				<ScanImage />
 			</TouchableOpacity>
 			<TransactionMenu />
