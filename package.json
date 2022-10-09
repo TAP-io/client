@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@ethersproject/shims": "^5.7.0",
     "@expo-google-fonts/roboto": "^0.2.2",
     "@expo-google-fonts/ubuntu": "^0.2.2",
     "@expo/ngrok": "^4.1.0",
@@ -29,6 +30,7 @@
     "constants-browserify": "^1.0.0",
     "dns.js": "^1.0.1",
     "domain-browser": "^1.2.0",
+    "ethers": "^5.7.1",
     "events": "^1.1.1",
     "expo": "~46.0.13",
     "expo-app-loading": "~2.1.0",
@@ -47,6 +49,7 @@
     "react-native": "0.69.6",
     "react-native-crypto": "^2.2.0",
     "react-native-gesture-handler": "~2.5.0",
+    "react-native-get-random-values": "^1.8.0",
     "react-native-indicators": "^0.17.0",
     "react-native-level-fs": "^3.0.1",
     "react-native-modal": "^13.0.1",

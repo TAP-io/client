@@ -15,7 +15,9 @@ import { GlobalStyles } from "../styles/styles";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Container, Icon, Button } from "../components/core";
-// import { ethers } from "ethers";
+import "react-native-get-random-values";
+import "@ethersproject/shims";
+import { ethers } from "ethers";
 global.Buffer = global.Buffer || Buffer;
 
 const scheme = "ETHBogota";
@@ -51,8 +53,8 @@ export default function LoginButton() {
 			setKey(state.privKey || "no key");
 
 			setUserInfo(state);
-			// const signer = new ethers.Wallet(key, provider);
-			// console.log(signer);
+			const signer = new ethers.Wallet(key, provider);
+			console.log({ signer });
 			// await AsyncStorage.setItem("address", state.privKey);
 			// navigation.navigate("tabs");
 		} catch (e) {
