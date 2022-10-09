@@ -1,18 +1,23 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
+import { useContext } from "react";
 import { TouchableOpacity } from "react-native";
 import { Container, ScreenWrapper, Text } from "../components/core";
 import ScanImage from "../components/transaction/scanImage";
+import { Context } from "../Providers/provider";
 import { GlobalStyles } from "../styles/styles";
 import SelectContact from "./selectContact";
 
 export default function AwaitingSend() {
+	const { isSpanish } = useContext(Context);
 	const navigation = useNavigation();
+	const title = isSpanish ? "" : "Transaction Ready";
+	const direction = isSpanish ? "" : "Hold to send";
 	return (
 		<ScreenWrapper goBack>
 			<Container style={GlobalStyles.pageHeader}>
 				<Text title center>
-					Transaction Ready
+					{title}
 				</Text>
 			</Container>
 			<SelectContact />
@@ -24,7 +29,7 @@ export default function AwaitingSend() {
 				}}>
 				<ScanImage />
 			</Container>
-			<Text center>Hold to send</Text>
+			<Text center>{direction}</Text>
 		</ScreenWrapper>
 	);
 }

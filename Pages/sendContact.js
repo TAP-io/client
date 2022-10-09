@@ -3,6 +3,7 @@ import { Container, ScreenWrapper, Text } from "../components/core";
 import { GlobalStyles } from "../styles/styles";
 
 export default function SendContact() {
+	// this screen isn't being used
 	return (
 		<ScreenWrapper goBack>
 			<Container style={GlobalStyles.pageHeader}>

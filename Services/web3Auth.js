@@ -61,7 +61,6 @@ export default function LoginButton() {
 				"maticmum",
 				"85dd1f2ff5714888b2ad407c14147db5"
 			);
-			// Add the keys back in
 			const signer = new ethers.Wallet(state.privKey, provider);
 			console.log(state.privKey, signer.address, state.userInfo.name);
 			await AsyncStorage.setItem("@priv_key", "0x" + state.privKey);
@@ -83,9 +82,8 @@ export default function LoginButton() {
 				onPress={login}
 				marginB={5}
 				marginT={10}
-				variant='contained'
-				leftIcon={<Icon name='google' type='MaterialCommunity' primaryDark />}
-			>
+				variant="contained"
+				leftIcon={<Icon name="google" type="MaterialCommunity" primaryDark />}>
 				Login with Google
 			</Button>
 		</>

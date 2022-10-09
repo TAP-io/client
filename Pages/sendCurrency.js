@@ -1,5 +1,5 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { TouchableOpacity } from "react-native";
 import {
 	Container,
@@ -10,9 +10,12 @@ import {
 } from "../components/core";
 import CurrencyCard from "../components/transaction/currencyCard";
 import SetCurrency from "../components/transaction/setCurrency";
+import { Context } from "../Providers/provider";
 import { GlobalStyles } from "../styles/styles";
 
 export default function SendCurrency() {
+	const { isSpanish } = useContext(Context);
+
 	const navigation = useNavigation();
 	const [selected, setSelected] = useState(0);
 	const [isFiat, setIsFiat] = useState(false);
@@ -42,7 +45,7 @@ export default function SendCurrency() {
 		<ScreenWrapper goBack>
 			<Container
 				style={{ ...GlobalStyles.pageHeader, justifyContent: "space-between" }}>
-				<Text title>Send Currency</Text>
+				<Text title>{isSpanish ? "" : "Send Currency"}</Text>
 				<TouchableOpacity onPress={() => setIsFiat(!isFiat)} style={{}}>
 					<Icon
 						name="swap-horizontal-circle-outline"
@@ -68,7 +71,7 @@ export default function SendCurrency() {
 				onPress={() => {
 					navigation.navigate("awaiting-send");
 				}}>
-				Next
+				{isSpanish ? "" : "Next"}
 			</Button>
 		</ScreenWrapper>
 	);

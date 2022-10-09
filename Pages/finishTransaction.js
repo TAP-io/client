@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
 	Button,
 	Container,
@@ -7,19 +7,22 @@ import {
 	ScreenWrapper,
 	Text,
 } from "../components/core";
+import { Context } from "../Providers/provider";
 import { GlobalStyles } from "../styles/styles";
 
 export default function FinishTransaction({}) {
+	const { isSpanish } = useContext(Context);
 	const navigation = useNavigation();
 	const [success, setSuccess] = useState(true);
+	const buttonText = isSpanish ? "" : "Take Me Home";
+	const failedMessage = isSpanish ? "" : "Transaction Failed";
+	const successMessage = isSpanish ? "" : "Transactions Successful";
 	return (
 		<ScreenWrapper>
 			<Container
 				onPress={() => setSuccess(!success)}
 				style={{ ...GlobalStyles.pageHeader, justifyContent: "space-between" }}>
-				<Text title>
-					{success ? "Transaction Successful" : "Transaction Failed"}
-				</Text>
+				<Text title>{success ? successMessage : failedMessage}</Text>
 				<Icon
 					name={success ? "check" : "error"}
 					xl

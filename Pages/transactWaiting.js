@@ -8,16 +8,18 @@ import { Context } from "../Providers/provider";
 import { Colors, GlobalStyles } from "../styles/styles";
 
 export default function Transact() {
-	const { address } = useContext(Context);
+	const { address, isSpanish } = useContext(Context);
+	const title = isSpanish ? "" : "Waiting to Read Scan";
+	const direction = isSpanish
+		? ""
+		: "Bring your phone close to another phone or an NFC tag and hold to scan";
 	return (
 		<ScreenWrapper>
 			{/* {address === "" && <Login />} */}
 			<Container style={GlobalStyles.pageHeader}>
-				<Text title>Waiting To Read Scan</Text>
+				<Text title>{title}</Text>
 			</Container>
-			<Text>
-				Bring your phone close to another phone or an NFC tag and hold to scan
-			</Text>
+			<Text>{direction}</Text>
 			<ScanImage />
 			<TransactionMenu />
 		</ScreenWrapper>

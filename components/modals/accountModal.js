@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { Dim, ModalStyles } from "../../styles/styles";
+import { Colors, Dim, ModalStyles } from "../../styles/styles";
 import Modal from "react-native-modal";
 import { Container, Text, Button } from "../core";
 import { Context } from "../../Providers/provider";
@@ -8,7 +8,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Share } from "react-native";
 
 export default function AccountModal({ modalVisible, setModalVisible }) {
-	const { address, setAddress } = useContext(Context);
+	const { address, setAddress, isSpanish } = useContext(Context);
 	const [name, setName] = useState("");
 	async function getName() {
 		let tempName = await AsyncStorage.getItem("@name");
@@ -35,18 +35,16 @@ export default function AccountModal({ modalVisible, setModalVisible }) {
 	return (
 		<Modal
 			isVisible={modalVisible}
-			animationIn='slideInDown'
+			animationIn="slideInDown"
 			animationOut={"slideOutUp"}
-			style={ModalStyles.modalWrapperTop}
-		>
+			style={ModalStyles.modalWrapperTop}>
 			<Container
 				style={{
 					...ModalStyles.modalTop,
 					paddingTop: 80,
 					paddingHorizontal: 20,
 				}}
-				bg
-			>
+				bg>
 				<Container row justifyStart fullWidth>
 					<Container
 						style={{
@@ -54,28 +52,26 @@ export default function AccountModal({ modalVisible, setModalVisible }) {
 							width: 100,
 							borderRadius: 50,
 							marginRight: 10,
-							backgroundColor: "gray",
-						}}
-					></Container>
+							backgroundColor: Colors.accent1Light,
+						}}></Container>
 					<Container alignStart>
 						<Text title>{name}</Text>
 						<Text>{address.slice(0, 20)}...</Text>
 					</Container>
 				</Container>
 				<Container row justifyCenter marginT={50}>
-					<Button variant='contained' onPress={share}>
-						Share Your Profile
+					<Button variant="contained" onPress={share}>
+						{isSpanish ? "" : "Share Your Profile"}
 					</Button>
-					<Button variant='danger' onPress={deleteAccount}>
-						Delete Your Profile
+					<Button variant="danger" onPress={deleteAccount}>
+						{isSpanish ? "" : "Delete Your Profile"}
 					</Button>
 				</Container>
 			</Container>
 
 			<TouchableOpacity
 				style={ModalStyles.behindModal}
-				onPress={() => setModalVisible(false)}
-			></TouchableOpacity>
+				onPress={() => setModalVisible(false)}></TouchableOpacity>
 		</Modal>
 	);
 }

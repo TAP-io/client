@@ -8,7 +8,7 @@ import { Context } from "../Providers/provider";
 import { GlobalStyles } from "../styles/styles";
 
 export default function Home() {
-	const { address } = useContext(Context);
+	const { address, isSpanish } = useContext(Context);
 	let transactions = [
 		{
 			from: "Sam",
@@ -32,13 +32,14 @@ export default function Home() {
 			type: "contact",
 		},
 	];
+	const title = isSpanish ? "" : "What's Tapping?";
 	return (
 		<ScreenWrapper scrollEnabled>
 			<DeepLinking />
 			{/* {address === "" && <Login />} */}
 			<Container style={GlobalStyles.pageHeader}>
 				<Text title primaryDark>
-					What's Tappin'?
+					{title}
 				</Text>
 			</Container>
 			{transactions.map((item) => {

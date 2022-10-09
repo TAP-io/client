@@ -4,7 +4,10 @@ import { CardStyles, GlobalStyles } from "../../styles/styles";
 import { Button, Container, Icon, Text } from "../core";
 import SampleNFT from "../../assets/beans.png";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { useContext } from "react";
+import { Context } from "../../Providers/provider";
 export default function TransactionCard({ item }) {
+	const { isSpanish } = useContext(Context);
 	if (item.type === "currency") {
 		return (
 			<Container
@@ -32,7 +35,7 @@ export default function TransactionCard({ item }) {
 				style={{ ...CardStyles.card, ...CardStyles.shadow }}>
 				<Container row justifyBetween fullWidth>
 					<Text subTitle>
-						{item.to} tapped a {item.from}
+						{isSpanish ? `` : `${item.to} tapped a ${item.from}`}
 					</Text>
 					<Text>{item.date}</Text>
 				</Container>
@@ -64,9 +67,9 @@ export default function TransactionCard({ item }) {
 					/>
 					<Container flex column alignStart>
 						<Text subTitle marginB={5}>
-							Your contact {item.who} just joined Tap.io!
+							{isSpanish ? `` : `Your contact ${item.who} just joined Tap.io!`}
 						</Text>
-						<Button>Send them a welcome NFT!</Button>
+						<Button>{isSpanish ? "" : "Send them a welcome NFT!"}</Button>
 					</Container>
 				</Container>
 			</Container>

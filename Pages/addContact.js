@@ -8,9 +8,10 @@ import Button from "../components/core/button";
 import { useRoute } from "@react-navigation/native";
 
 export default function NewContact({ modalVisible, setModalVisible }) {
-	const { name, address } = useRoute().params;
+	const { name, address, isSpanish } = useRoute().params;
 	const [inputName, setInputName] = useState(name || "");
 	const [inputAddress, setInputAddress] = useState(address || "");
+	const buttonText = isSpanish ? "" : "Save Contact";
 	return (
 		<ScreenWrapper goBack>
 			<Container column justifyStart fullWidth>
@@ -21,25 +22,23 @@ export default function NewContact({ modalVisible, setModalVisible }) {
 						borderRadius: 50,
 						marginRight: 10,
 						backgroundColor: "gray",
-					}}
-				></Container>
+					}}></Container>
 				<TextInput
 					value={inputName}
 					onChangeText={(newName) => setInputName(newName)}
-					placeholder='name'
+					placeholder="name"
 				/>
 				<TextInput
 					value={inputAddress}
 					onChangeText={(newAddress) => setInputAddress(newAddress)}
-					placeholder='0x00000000000000000000000000000'
+					placeholder="0x00000000000000000000000000000"
 				/>
 			</Container>
 			<Button
-				variant='contained'
+				variant="contained"
 				isFullWidth
-				onPress={() => setModalVisible(false)}
-			>
-				Save Contact
+				onPress={() => setModalVisible(false)}>
+				{buttonText}
 			</Button>
 		</ScreenWrapper>
 	);

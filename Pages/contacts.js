@@ -10,20 +10,20 @@ import Login from "../components/auth/loginMethods";
 import { Context } from "../Providers/provider";
 
 export default function Contacts() {
-	const { address } = useContext(Context);
+	const { isSpanish } = useContext(Context);
 	const navigation = useNavigation();
 	const [searchField, setSearchField] = useState("");
+	const title = isSpanish ? "" : "My Contacts";
 	return (
 		<>
 			<ScreenWrapper>
-				{/* {address === "" && <Login />} */}
 				<Container
 					style={{
 						...GlobalStyles.pageHeader,
 						justifyContent: "space-between",
 					}}>
 					<Text title primaryDark>
-						My Contacts
+						{title}
 					</Text>
 					<TouchableOpacity
 						onPress={() => {

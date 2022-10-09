@@ -48,6 +48,7 @@ export default function TabNavigator() {
 	const { address, setAddress, setName } = useContext(Context);
 
 	async function checkLogin() {
+		console.log("What");
 		setAddress("");
 		setName("");
 

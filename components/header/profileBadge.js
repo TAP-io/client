@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Container, Icon, Text } from "../core";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Context } from "../../Providers/provider";
+import { Colors } from "../../styles/styles";
 
 export default function ProfileBadge({ setModalVisible }) {
 	const { address } = useContext(Context);
@@ -33,7 +34,7 @@ export default function ProfileBadge({ setModalVisible }) {
 					height: 35,
 					width: 35,
 					borderRadius: 25,
-					backgroundColor: "gray",
+					backgroundColor: Colors.accent1Light,
 				}}></Container>
 			<Text marginX={5} subTitle>
 				{name}

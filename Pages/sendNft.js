@@ -1,11 +1,14 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
+import { useContext } from "react";
 import { Button, Container, ScreenWrapper, Text } from "../components/core";
 import NftModal from "../components/modals/nftModal";
 import NFTCard from "../components/transaction/nftCard";
+import { Context } from "../Providers/provider";
 import { GlobalStyles } from "../styles/styles";
 
 export default function SendNFT() {
+	const { isSpanish } = useContext(Context);
 	const navigation = useNavigation();
 	const [modalVisible, setModalVisible] = useState(false);
 	const [focusedId, setFocusedId] = useState("");
@@ -35,7 +38,7 @@ export default function SendNFT() {
 	return (
 		<ScreenWrapper goBack>
 			<Container style={GlobalStyles.pageHeader}>
-				<Text title>Send NFT</Text>
+				<Text title>{isSpanish ? "" : "Send NFT"}</Text>
 			</Container>
 			<Container flex row wrap justifyCenter alignStart>
 				{NFTS.map((item) => {
