@@ -30,7 +30,7 @@ import {
 } from "@expo-google-fonts/roboto";
 import TabNavigator from "./Router/tabNavigator";
 import Login from "./components/auth/loginMethods";
-import WalletConnectProvider from "@walletconnect/react-native-dapp";
+// import WalletConnectProvider from "@walletconnect/react-native-dapp";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { StatusBar } from "expo-status-bar";
@@ -63,22 +63,23 @@ export default function App() {
 		return <AppLoading />;
 	} else {
 		return (
-			<WalletConnectProvider
-				redirectUrl={
-					Platform.OS === "web"
-						? window.location.origin
-						: `${SCHEME_FROM_APP_JSON}://`
-				}
-				storageOptions={{
-					asyncStorage: AsyncStorage,
-				}}>
-				<StatusBar style="auto" />
-				<Provider>
-					<NavigationContainer>
-						<TabNavigator />
-					</NavigationContainer>
-				</Provider>
-			</WalletConnectProvider>
+			// <WalletConnectProvider
+			// 	redirectUrl={
+			// 		Platform.OS === "web"
+			// 			? window.location.origin
+			// 			: `${SCHEME_FROM_APP_JSON}://`
+			// 	}
+			// 	storageOptions={{
+			// 		asyncStorage: AsyncStorage,
+			// 	}}>
+			<Provider>
+				<StatusBar style='auto' />
+
+				<NavigationContainer>
+					<TabNavigator />
+				</NavigationContainer>
+			</Provider>
+			// </WalletConnectProvider>
 		);
 	}
 }

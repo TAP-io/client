@@ -60,23 +60,5 @@ export default function DeepLinking() {
 		addLinkingListener();
 	}, []);
 
-	return (
-		<Container>
-			<Button
-				onPress={() => {
-					Share.share({
-						url: Linking.createURL("/contact", {
-							queryParams: {
-								address: "a",
-								name: "sam",
-							},
-						}),
-					});
-				}}
-			>
-				Link!
-			</Button>
-			{/* <Text>Deep Linking</Text> */}
-		</Container>
-	);
+	return <Container></Container>;
 }
