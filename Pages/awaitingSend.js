@@ -9,27 +9,28 @@ import { GlobalStyles } from "../styles/styles";
 import SelectContact from "./selectContact";
 
 export default function AwaitingSend() {
-	const { isSpanish } = useContext(Context);
-	const navigation = useNavigation();
-	const title = isSpanish ? "" : "Transaction Ready";
-	const direction = isSpanish ? "" : "Hold to send";
-	return (
-		<ScreenWrapper goBack>
-			<Container style={GlobalStyles.pageHeader}>
-				<Text title center>
-					{title}
-				</Text>
-			</Container>
-			<SelectContact />
-			<Container
-				marginT={40}
-				onPress={() => {
-					// facilitate transaction
-					navigation.navigate("finish-transaction");
-				}}>
-				<ScanImage />
-			</Container>
-			<Text center>{direction}</Text>
-		</ScreenWrapper>
-	);
+  const { isSpanish } = useContext(Context);
+  const navigation = useNavigation();
+  const title = isSpanish ? "" : "Transacción Lista";
+  const direction = isSpanish ? "" : "Presione para Enviar";
+  return (
+    <ScreenWrapper goBack>
+      <Container style={GlobalStyles.pageHeader}>
+        <Text title center>
+          {title}
+        </Text>
+      </Container>
+      <SelectContact />
+      <Container
+        marginT={40}
+        onPress={() => {
+          // facilitate transaction
+          navigation.navigate("finish-transaction");
+        }}
+      >
+        <ScanImage />
+      </Container>
+      <Text center>{direction}</Text>
+    </ScreenWrapper>
+  );
 }

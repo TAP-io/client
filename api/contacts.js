@@ -2,8 +2,9 @@ import * as ethers from "ethers";
 import ContractAbi from "../abi/contactlist.json";
 import erc721abi from "../abi/erc721.json";
 import erc20abi from "../abi/erc20.json";
-import { Web3Storage } from "web3.storage";
+//import { Web3Storage } from "web3.storage";
 
+/*
 function getAccessToken() {
   return process.env.WEB3STORAGE_TOKEN;
 }
@@ -14,6 +15,7 @@ function makeStorageClient() {
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDUyOTZDMTkxMkY0M0E0NkNBNDJmQzcxNmQxZmNjN2UwNGQxZEI3MGEiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NjUzMDU2MzI2OTEsIm5hbWUiOiJUYXAifQ.iyIOJOSITF4lj6ADpnbyRI8tJiSl6ukuWAaBgVivMek",
   });
 }
+*/
 
 function makeFileObjects(_name, _address, _phone) {
   const obj = { name: _name, address: _address, phone: _phone };
@@ -26,12 +28,14 @@ function makeFileObjects(_name, _address, _phone) {
   return files;
 }
 
+/*
 async function storeFiles(files) {
   const client = makeStorageClient();
   const cid = await client.put(files);
   console.log("stored files with cid:", cid);
   return cid;
 }
+*/
 
 let provider = null;
 
@@ -54,6 +58,7 @@ export async function createList(phone) {
   console.log("created list");
 }
 
+/*
 export async function addContact(name, address, phone) {
   const signer = provider.getSigner();
   const ContactList = new ethers.Contract(
@@ -75,6 +80,7 @@ export async function addContact(name, address, phone) {
   console.log("added contact");
 }
 
+*/
 export async function getAllContacts() {
   const signer = provider.getSigner();
   const ContactList = new ethers.Contract(

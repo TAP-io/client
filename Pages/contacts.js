@@ -13,10 +13,7 @@ export default function Contacts() {
   const { isSpanish } = useContext(Context);
   const navigation = useNavigation();
   const [searchField, setSearchField] = useState("");
-  const [address, setAddress] = useState("");
-  const title = isSpanish ? "" : "My Contacts";
-  const [hasList, setHasList] = useState(false);
-
+  const title = isSpanish ? "" : "Mis Contactos";
   return (
     <>
       <ScreenWrapper>
