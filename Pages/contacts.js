@@ -10,37 +10,42 @@ import Login from "../components/auth/loginMethods";
 import { Context } from "../Providers/provider";
 
 export default function Contacts() {
-	const { isSpanish } = useContext(Context);
-	const navigation = useNavigation();
-	const [searchField, setSearchField] = useState("");
-	const title = isSpanish ? "" : "My Contacts";
-	return (
-		<>
-			<ScreenWrapper>
-				<Container
-					style={{
-						...GlobalStyles.pageHeader,
-						justifyContent: "space-between",
-					}}>
-					<Text title primaryDark>
-						{title}
-					</Text>
-					<TouchableOpacity
-						onPress={() => {
-							navigation.navigate("new-contact");
-						}}>
-						<Icon name="person-add" lg primaryDark />
-					</TouchableOpacity>
-				</Container>
-				<TextInput
-					value={searchField}
-					placeholder="Vitalik"
-					leftAdornment={<Icon name="search" secondary lg marginL={3} />}
-				/>
-				<ContactCard name="sam" />
-				<ContactCard name="marcos" />
-				<ContactCard name="bryan" />
-			</ScreenWrapper>
-		</>
-	);
+  const { isSpanish } = useContext(Context);
+  const navigation = useNavigation();
+  const [searchField, setSearchField] = useState("");
+  const [address, setAddress] = useState("");
+  const title = isSpanish ? "" : "My Contacts";
+  const [hasList, setHasList] = useState(false);
+
+  return (
+    <>
+      <ScreenWrapper>
+        <Container
+          style={{
+            ...GlobalStyles.pageHeader,
+            justifyContent: "space-between",
+          }}
+        >
+          <Text title primaryDark>
+            {title}
+          </Text>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("new-contact");
+            }}
+          >
+            <Icon name="person-add" lg primaryDark />
+          </TouchableOpacity>
+        </Container>
+        <TextInput
+          value={searchField}
+          placeholder="Vitalik"
+          leftAdornment={<Icon name="search" secondary lg marginL={3} />}
+        />
+        <ContactCard name="sam" />
+        <ContactCard name="marcos" />
+        <ContactCard name="bryan" />
+      </ScreenWrapper>
+    </>
+  );
 }
