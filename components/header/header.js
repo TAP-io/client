@@ -6,8 +6,12 @@ import AccountModal from "../modals/accountModal";
 import ProfileBadge from "./profileBadge";
 import { Platform, SafeAreaView } from "react-native";
 import { Colors } from "../../styles/styles";
+import { useContext } from "react";
+import { Context } from "../../Providers/provider";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Header({ goBack }) {
+	const { isSpanish, setIsSpanish } = useContext(Context);
 	const [modalVisible, setModalVisible] = useState(false);
 
 	const navigation = useNavigation();
@@ -48,12 +52,14 @@ export default function Header({ goBack }) {
 					)}
 
 					<ProfileBadge name={"Brendan"} setModalVisible={setModalVisible} />
-					{/* make this icon open up the docs */}
+
 					<Container
-						onPress={() => {
+						onPress={async () => {
+							setIsSpanish(!isSpanish);
+							await AsyncStorage.setItem("@isSpanish", isSpanish.toString());
 							console.log("open docs");
 						}}>
-						<Icon name="help" lg />
+						<Icon name="language" lg />
 					</Container>
 				</Container>
 			</SafeAreaView>
