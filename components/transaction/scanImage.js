@@ -2,10 +2,12 @@ import { View } from "react-native";
 import { Colors } from "../../styles/styles";
 import { Container, Icon } from "../core";
 
-export default function ScanImage() {
+export default function ScanImage(props) {
+	let color = props.color ? props.color : Colors.primary;
 	let center = {
 		position: "absolute",
 	};
+
 	return (
 		<Container
 			fullWidth
@@ -25,7 +27,7 @@ export default function ScanImage() {
 					height: 250,
 					width: 250,
 					borderRadius: 125,
-					backgroundColor: Colors.primary,
+					backgroundColor: color,
 					opacity: 0.2,
 				}}
 			/>
@@ -36,7 +38,7 @@ export default function ScanImage() {
 					height: 150,
 					width: 150,
 					borderRadius: 75,
-					backgroundColor: Colors.primary,
+					backgroundColor: color,
 					opacity: 0.4,
 				}}
 			/>
@@ -47,7 +49,7 @@ export default function ScanImage() {
 					width: 80,
 					zIndex: 3,
 					borderRadius: 40,
-					backgroundColor: Colors.primary,
+					backgroundColor: color,
 					opacity: 0.6,
 				}}
 			/>

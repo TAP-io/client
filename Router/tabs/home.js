@@ -5,14 +5,10 @@ const Stack = createNativeStackNavigator();
 export default function HomeTab() {
 	return (
 		<Stack.Navigator
-			initialRouteName="Home"
+			initialRouteName="home-feed"
 			defaultStatus="open"
-			screenOptions={{ headerShow: false }}>
-			<Stack.Screen
-				name="home blah"
-				component={Home}
-				options={{ headerShown: false }}
-			/>
+			screenOptions={{ headerShown: false }}>
+			<Stack.Screen name="home-feed" component={Home} />
 		</Stack.Navigator>
 	);
 }

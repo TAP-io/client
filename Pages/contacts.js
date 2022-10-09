@@ -10,7 +10,6 @@ import { useNavigation } from "@react-navigation/native";
 export default function Contacts() {
 	const navigation = useNavigation();
 	const [searchField, setSearchField] = useState("");
-	const [modalVisible, setModalVisible] = useState(false);
 	return (
 		<>
 			<ScreenWrapper>
@@ -19,7 +18,9 @@ export default function Contacts() {
 						...GlobalStyles.pageHeader,
 						justifyContent: "space-between",
 					}}>
-					<Text title>My Contacts</Text>
+					<Text title primaryDark>
+						My Contacts
+					</Text>
 					<TouchableOpacity
 						onPress={() => {
 							navigation.navigate("new-contact");
@@ -36,10 +37,6 @@ export default function Contacts() {
 				<ContactCard name="marcos" />
 				<ContactCard name="bryan" />
 			</ScreenWrapper>
-			<NewContactModal
-				modalVisible={modalVisible}
-				setModalVisible={setModalVisible}
-			/>
 		</>
 	);
 }

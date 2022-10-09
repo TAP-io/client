@@ -37,22 +37,19 @@ export default function ScreenWrapper({
 	});
 
 	return (
-		<ScrollView
-			refreshControl={
-				onRefresh ? (
-					<RefreshControl
-						refreshing={refreshing}
-						onRefresh={onRefresh ? onRefreshWrapper : null}
-					/>
-				) : null
-			}
-			scrollEnabled={scrollEnabled ? true : false}
-			backgroundColor={Colors.bg}
-			style={{
-				borderRadius: 10,
-			}}>
-			<SafeAreaView>
-				<Header goBack={goBack} />
+		<>
+			<Header goBack={goBack} />
+			<ScrollView
+				refreshControl={
+					onRefresh ? (
+						<RefreshControl
+							refreshing={refreshing}
+							onRefresh={onRefresh ? onRefreshWrapper : null}
+						/>
+					) : null
+				}
+				scrollEnabled={scrollEnabled ? true : false}
+				backgroundColor={Colors.bg}>
 				<View style={{ alignItems: "center" }}>
 					{loading ? (
 						<LoadingWrapper loading={loading}>
@@ -77,7 +74,7 @@ export default function ScreenWrapper({
 					</LoadingWrapper>
 					<View height={100} />
 				</View>
-			</SafeAreaView>
-		</ScrollView>
+			</ScrollView>
+		</>
 	);
 }

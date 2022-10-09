@@ -7,8 +7,8 @@ import { GlobalStyles } from "../styles/styles";
 export default function Login() {
 	return (
 		<ScreenWrapper>
-			<Container style={GlobalStyles.pageHeader} alignCenter fullWidth>
-				<Text title center>
+			<Container style={GlobalStyles.pageHeader}>
+				<Text title primaryDark>
 					Welcome
 				</Text>
 			</Container>
