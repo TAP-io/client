@@ -1,27 +1,15 @@
-import TransactionTab from "./tabs/transact";
-import CustomDrawer from "./customDrawer";
-import Contacts from "../Pages/contacts";
-import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
-// File:
-// Default
-import React, { useContext, useState, useEffect } from "react";
-import {
-	SafeAreaView,
-	useWindowDimensions,
-	View,
-	StyleSheet,
-	TouchableOpacity,
-} from "react-native";
-// Nav
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import "react-native-gesture-handler";
-// API
-// Libraries
-import { Button, Container, Icon, Text } from "../components/core";
-import { CardStyles, Colors } from "../styles/styles";
-import { useNavigation } from "@react-navigation/native";
+import React, { useContext } from "react";
 import { Context } from "../Providers/provider";
-import TransactionMenu from "../components/transaction/transactMenu";
+
+import TransactionTab from "./tabs/transact";
+import ContactsTab from "./tabs/contacts";
+import CustomDrawer from "./customDrawer";
+
+import { View, StyleSheet } from "react-native";
+import { Container, Icon } from "../components/core";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { CardStyles, Colors } from "../styles/styles";
+
 // Vars
 const Tab = createBottomTabNavigator();
 
@@ -147,7 +135,7 @@ export default function TabNavigator() {
 			/>
 			<Tab.Screen
 				name="profileTab"
-				component={Contacts}
+				component={ContactsTab}
 				options={{
 					tabBarLabel: "Profile",
 					tabBarIcon: ({ focused }) => <ContactIcon focused={focused} />,

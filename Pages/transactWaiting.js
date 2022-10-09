@@ -1,3 +1,4 @@
+import { useRoute } from "@react-navigation/native";
 import React from "react";
 import { Container, Icon, ScreenWrapper, Text } from "../components/core";
 import ScanImage from "../components/transaction/scanImage";

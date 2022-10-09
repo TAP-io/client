@@ -8,9 +8,10 @@ export default function DeepLinking() {
 			if (data.path) {
 				var params = data.path.split("/");
 				if (params[0] === "transaction") {
-					navigation.navigate(`transaction`, {
+					navigation.navigate(`transact`, {
 						toAddress: params[1],
 						amount: params[2],
+						currency: params[3],
 					});
 				} else if (params[0] === "contact") {
 					navigation.navigate(`new-contact`, {
@@ -25,9 +26,10 @@ export default function DeepLinking() {
 			if (data.path) {
 				if (data.path === "transaction") {
 					// TODO: NAVIGATE TO THE TRANSACT PAGE WITH THE TRANSACTION PARAMS
-					navigation.navigate(`transaction`, {
+					navigation.navigate(`send-currency`, {
 						toAddress: data.queryParams.toAddress,
 						amount: data.queryParams.amount,
+						currency: data.queryParams.currency,
 					});
 				} else if (data.path === "contact") {
 					navigation.navigate(`new-contact`, {
@@ -53,9 +55,5 @@ export default function DeepLinking() {
 		addLinkingListener();
 	}, []);
 
-	return (
-		<Container>
-			<Text>Deep Linking</Text>
-		</Container>
-	);
+	return <Container>{/* <Text>Deep Linking</Text> */}</Container>;
 }

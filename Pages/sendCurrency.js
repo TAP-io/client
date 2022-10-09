@@ -1,4 +1,4 @@
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import React, { useState } from "react";
 import { TouchableOpacity } from "react-native";
 import {
@@ -16,6 +16,7 @@ export default function SendCurrency() {
 	const navigation = useNavigation();
 	const [selected, setSelected] = useState(0);
 	const [isFiat, setIsFiat] = useState(false);
+	const { toAddress, amount, currency } = useRoute().params;
 
 	let currencies = [
 		{

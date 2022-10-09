@@ -13,6 +13,11 @@ export default function TransactionMenu() {
 			color: Colors.accent1Light,
 			destination: "send-currency",
 			pressHandler: () => console.log("pressed"),
+			params: {
+				toAddress: "",
+				amount: 0,
+				currency: "",
+			},
 		},
 		{
 			icon: <Icon name="wallet-giftcard" type="MaterialCommunity" lg />,
@@ -52,7 +57,9 @@ export default function TransactionMenu() {
 					{options.map((item) => {
 						return (
 							<Container
-								onPress={() => navigation.navigate(item.destination)}
+								onPress={() =>
+									navigation.navigate(item.destination, item.params)
+								}
 								column
 								justifyCenter
 								style={{ ...moduleButton, backgroundColor: item.color }}>

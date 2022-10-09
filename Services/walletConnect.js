@@ -10,6 +10,7 @@ export default function WalletConnect() {
 	return (
 		<Container>
 			<Button
+				isFullWidth
 				variant="contained"
 				onPress={() => {
 					setLoggedIn(true);
