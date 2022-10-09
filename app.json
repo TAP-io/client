@@ -19,14 +19,6 @@
 			"supportsTablet": true,
 			"userInterfaceStyle": "automatic",
 			"bundleIdentifier": "com.tap.tapio",
-			"infoPlist": {
-				"NSCameraUsageDescription": "This app uses the camera to upload images for group pics and profile pics and scanning QR codes.",
-				"NSPhotoLibraryUsageDescription": "Allow access to photos to upload photos from your library for group pics and profile pics.",
-				"NSPhotoLibraryAddUsageDescription": "Quae would like to save photos to your library to share poll results.",
-				"NSContactsUsageDescription": "This app uses your contacts to show you who is already on our platform for you to support and for you to invite. We do not store your contacts anywhere.",
-				"UIRequiresFullScreen": true
-			},
-			"googleServicesFile": "./GoogleService-Info.plist",
 			"associatedDomains": ["applinks:www.tapme.contact"]
 		},
 		"android": {
@@ -38,7 +30,6 @@
 			"package": "com.tap.tapio",
 			"userInterfaceStyle": "automatic",
 			"versionCode": 1,
-			"googleServicesFile": "./google-services.json",
 			"intentFilters": [
 				{
 					"action": "VIEW",
@@ -59,9 +50,13 @@
 				}
 			]
 		},
-
 		"web": {
 			"favicon": "./assets/favicon.png"
+		},
+		"extra": {
+			"eas": {
+				"projectId": "59bf2110-fc1b-4882-9f6d-00049308c311"
+			}
 		}
 	}
 }

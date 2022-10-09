@@ -18,7 +18,7 @@ export default function AccountModal({ modalVisible, setModalVisible }) {
 			setName(tempName);
 		}
 	}
-	const link = `https://tap-io-contacts.herokuapp.com/contact/${address}/${name}`;
+	const link = `https://www.tapme.contact/contact/${address}/${name}`;
 	const share = () => {
 		Share.share({ url: link });
 	};
@@ -35,16 +35,18 @@ export default function AccountModal({ modalVisible, setModalVisible }) {
 	return (
 		<Modal
 			isVisible={modalVisible}
-			animationIn="slideInDown"
+			animationIn='slideInDown'
 			animationOut={"slideOutUp"}
-			style={ModalStyles.modalWrapperTop}>
+			style={ModalStyles.modalWrapperTop}
+		>
 			<Container
 				style={{
 					...ModalStyles.modalTop,
 					paddingTop: 80,
 					paddingHorizontal: 20,
 				}}
-				bg>
+				bg
+			>
 				<Container row justifyStart fullWidth>
 					<Container
 						style={{
@@ -53,17 +55,18 @@ export default function AccountModal({ modalVisible, setModalVisible }) {
 							borderRadius: 50,
 							marginRight: 10,
 							backgroundColor: "gray",
-						}}></Container>
+						}}
+					></Container>
 					<Container alignStart>
 						<Text title>{name}</Text>
 						<Text>{address.slice(0, 20)}...</Text>
 					</Container>
 				</Container>
 				<Container row justifyCenter marginT={50}>
-					<Button variant="contained" onPress={share}>
+					<Button variant='contained' onPress={share}>
 						Share Your Profile
 					</Button>
-					<Button variant="danger" onPress={deleteAccount}>
+					<Button variant='danger' onPress={deleteAccount}>
 						Delete Your Profile
 					</Button>
 				</Container>
@@ -71,7 +74,8 @@ export default function AccountModal({ modalVisible, setModalVisible }) {
 
 			<TouchableOpacity
 				style={ModalStyles.behindModal}
-				onPress={() => setModalVisible(false)}></TouchableOpacity>
+				onPress={() => setModalVisible(false)}
+			></TouchableOpacity>
 		</Modal>
 	);
 }
