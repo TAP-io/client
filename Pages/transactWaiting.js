@@ -12,7 +12,12 @@ import ScanImage from "../components/transaction/scanImage";
 import TransactionMenu from "../components/transaction/transactMenu";
 import { Context } from "../Providers/provider";
 import { Colors, GlobalStyles } from "../styles/styles";
-import { readMifare, readNFC, readNFCWithCallback } from "../Services/nfc";
+import {
+	readMifare,
+	readNFC,
+	readNFCWithCallback,
+	readTagCopy,
+} from "../Services/nfc";
 import { useState } from "react";
 export default function Transact() {
 	const { address, isSpanish } = useContext(Context);
@@ -48,6 +53,14 @@ export default function Transact() {
 					await readMifare();
 				}}>
 				Mifare
+			</Button>
+			<Button
+				onPress={async () => {
+					console.log("pressed");
+					result = await readTagCopy();
+					console.log(result);
+				}}>
+				Copy from source code
 			</Button>
 			<TouchableOpacity
 				onPress={async () => {
