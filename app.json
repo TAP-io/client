@@ -1,8 +1,9 @@
 {
 	"expo": {
-		"name": "tap-client",
+		"name": "Tap Me",
 		"slug": "tap-client",
-		"version": "1.0.0",
+		"scheme": "tapme",
+		"version": "1.0.2",
 		"orientation": "portrait",
 		"icon": "./assets/icon.png",
 		"userInterfaceStyle": "light",
