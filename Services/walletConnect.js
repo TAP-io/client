@@ -1,18 +1,58 @@
-import { useNavigation } from "@react-navigation/native";
-import React, { useContext } from "react";
-import { Button, Container, Icon, Text } from "../components/core";
-import { Context } from "../Providers/provider";
+import * as React from "react";
+import { Text, TouchableOpacity, StyleSheet } from "react-native";
+import { useWalletConnect } from "@walletconnect/react-native-dapp";
 
-export default function WalletConnect() {
-	const navigation = useNavigation();
+const shortenAddress = (address) => {
+	return `${address.slice(0, 6)}...${address.slice(
+		address.length - 4,
+		address.length
+	)}`;
+};
+
+function Button({ onPress, label }) {
 	return (
-		<Button
-			variant="contained"
-			onPress={() => {
-				navigation.navigate("tabs");
-			}}
-			leftIcon={<Icon name="wallet" type="MaterialCommunity" primaryDark />}>
-			Add A Wallet
-		</Button>
+		<TouchableOpacity onPress={onPress} style={styles.button}>
+			<Text style={styles.text}>{label}</Text>
+		</TouchableOpacity>
 	);
 }
+
+export default function WalletConnectExperience() {
+	const connector = useWalletConnect();
+
+	const connectWallet = React.useCallback(() => {
+		return connector.connect();
+	}, [connector]);
+
+	const killSession = React.useCallback(() => {
+		return connector.killSession();
+	}, [connector]);
+
+	return (
+		<>
+			{!connector.connected ? (
+				<Button onPress={connectWallet} label="Connect a wallet" />
+			) : (
+				<>
+					<Text>{shortenAddress(connector.accounts[0])}</Text>
+					<Button onPress={killSession} label="Log out" />
+				</>
+			)}
+		</>
+	);
+}
+
+const styles = StyleSheet.create({
+	button: {
+		backgroundColor: "#5A45FF",
+		color: "#FFFFFF",
+		borderRadius: 12,
+		paddingHorizontal: 16,
+		paddingVertical: 12,
+	},
+	text: {
+		color: "#FFFFFF",
+		fontSize: 16,
+		fontWeight: "600",
+	},
+});

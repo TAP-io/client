@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import AppLoading from "expo-app-loading";
 
-import { Context, Provider } from "./Providers/provider";
+import { Provider } from "./Providers/provider";
 import {
 	useFonts,
 	Ubuntu_300Light,
@@ -30,9 +30,11 @@ import {
 } from "@expo-google-fonts/roboto";
 import TabNavigator from "./Router/tabNavigator";
 import Login from "./components/auth/loginMethods";
-import { View } from "react-native";
-import { StatusBar } from "expo-status-bar";
+import WalletConnectProvider from "@walletconnect/react-native-dapp";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
+import { StatusBar } from "expo-status-bar";
+const SCHEME_FROM_APP_JSON = "tapme";
 export default function App() {
 	let [fontsLoaded] = useFonts({
 		Ubuntu_300Light,
@@ -61,14 +63,22 @@ export default function App() {
 		return <AppLoading />;
 	} else {
 		return (
-			<>
+			<WalletConnectProvider
+				redirectUrl={
+					Platform.OS === "web"
+						? window.location.origin
+						: `${SCHEME_FROM_APP_JSON}://`
+				}
+				storageOptions={{
+					asyncStorage: AsyncStorage,
+				}}>
 				<StatusBar style="auto" />
 				<Provider>
 					<NavigationContainer>
 						<TabNavigator />
 					</NavigationContainer>
 				</Provider>
-			</>
+			</WalletConnectProvider>
 		);
 	}
 }
