@@ -38,7 +38,7 @@ export default function Header({ goBack }) {
 							style={{
 								backgroundColor: Colors.primaryDark,
 								padding: 2,
-								borderRadius: "50%",
+								borderRadius: 50,
 							}}
 							// todo: this does not work on any tab except for home tab
 							onPress={() => {}}>

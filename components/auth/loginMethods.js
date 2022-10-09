@@ -32,7 +32,7 @@ export default function Login() {
 				style={{
 					backgroundColor: Colors.primaryDark,
 					padding: 10,
-					borderRadius: "50%",
+					borderRadius: 50,
 				}}>
 				<Icon
 					name="contactless-payment"

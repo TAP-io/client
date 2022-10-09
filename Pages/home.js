@@ -36,7 +36,6 @@ export default function Home() {
 	return (
 		<ScreenWrapper scrollEnabled>
 			<DeepLinking />
-			{/* {address === "" && <Login />} */}
 			<Container style={GlobalStyles.pageHeader}>
 				<Text title primaryDark>
 					{title}
