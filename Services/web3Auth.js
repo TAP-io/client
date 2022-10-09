@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import Web3Auth, {
 	LOGIN_PROVIDER,
 	OPENLOGIN_NETWORK,
@@ -11,13 +11,13 @@ import * as Linking from "expo-linking";
 import * as WebBrowser from "expo-web-browser";
 import { Buffer } from "buffer";
 import { useNavigation } from "@react-navigation/native";
-import { GlobalStyles } from "../styles/styles";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Container, Icon, Button } from "../components/core";
 import "react-native-get-random-values";
 import "@ethersproject/shims";
+
 import { ethers } from "ethers";
+import { Context } from "../Providers/provider";
 global.Buffer = global.Buffer || Buffer;
 
 const scheme = "ETHBogota";
@@ -41,6 +41,7 @@ export async function getWeb3AuthState() {
 	return state;
 }
 export default function LoginButton() {
+	const { setAddress } = useContext(Context);
 	const navigation = useNavigation();
 	const [key, setKey] = useState("");
 	const [errorMsg, setErrorMsg] = useState("");
@@ -49,17 +50,23 @@ export default function LoginButton() {
 	const login = async () => {
 		try {
 			const state = await getWeb3AuthState();
-			console.log(state);
 			setKey(state.privKey || "no key");
-
 			setUserInfo(state);
 
-			const provider = ethers.providers.InfuraProvider();
+			const provider = new ethers.providers.InfuraProvider(
+				"maticmum",
+				"85dd1f2ff5714888b2ad407c14147db5"
+			);
 			// Add the keys back in
 			const signer = new ethers.Wallet(key, provider);
-			console.log({ signer });
-			console.log("=======================================");
-			// await AsyncStorage.setItem("address", state.privKey);
+			await AsyncStorage.setItem("@priv_key", state.privKey);
+			await AsyncStorage.setItem("@address", signer.address);
+			console.log(state.userInfo);
+			if (state.userInfo.name) {
+				await AsyncStorage.setItem("@name", state.userInfo.name);
+			}
+			setAddress(signer.address);
+
 			// navigation.navigate("tabs");
 		} catch (e) {
 			console.error(e);

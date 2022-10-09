@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Icon, Text } from "../core";
-export default function ProfileBadge({ name, setModalVisible }) {
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+export default function ProfileBadge({ setModalVisible }) {
+	const [name, setName] = useState("");
+	async function getName() {
+		let tempName = await AsyncStorage.getItem("@name");
+		console.log({ tempName });
+		if (!tempName) {
+			setName("Add your name");
+		} else {
+			setName(tempName);
+		}
+	}
+	useEffect(() => {
+		getName();
+	}, []);
+
 	return (
 		<Container
 			flex
