@@ -1,7 +1,7 @@
 {
 	"expo": {
 		"name": "Tap Me",
-		"slug": "tap-client",
+		"slug": "tapme",
 		"scheme": "tapme",
 		"version": "1.0.2",
 		"orientation": "portrait",

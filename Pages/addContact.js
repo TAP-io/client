@@ -5,10 +5,12 @@ import Modal from "react-native-modal";
 import { Container, ScreenWrapper, Text, TextInput } from "../components/core";
 import { Context } from "../Providers/provider";
 import Button from "../components/core/button";
+import { useRoute } from "@react-navigation/native";
 
 export default function NewContact({ modalVisible, setModalVisible }) {
-	const [name, setName] = useState("");
-	const [address, setAddress] = useState("");
+	const { name, address } = useRoute().params;
+	const [inputName, setInputName] = useState(name || "");
+	const [inputAddress, setInputAddress] = useState(address || "");
 	return (
 		<ScreenWrapper goBack>
 			<Container column justifyStart fullWidth>
@@ -19,22 +21,24 @@ export default function NewContact({ modalVisible, setModalVisible }) {
 						borderRadius: 50,
 						marginRight: 10,
 						backgroundColor: "gray",
-					}}></Container>
+					}}
+				></Container>
 				<TextInput
-					value={name}
-					onChangeText={(newName) => setName(newName)}
-					placeholder="name"
+					value={inputName}
+					onChangeText={(newName) => setInputName(newName)}
+					placeholder='name'
 				/>
 				<TextInput
-					value={address}
-					onChangeText={(newAddress) => setAddress(newAddress)}
-					placeholder="0x00000000000000000000000000000"
+					value={inputAddress}
+					onChangeText={(newAddress) => setInputAddress(newAddress)}
+					placeholder='0x00000000000000000000000000000'
 				/>
 			</Container>
 			<Button
-				variant="contained"
+				variant='contained'
 				isFullWidth
-				onPress={() => setModalVisible(false)}>
+				onPress={() => setModalVisible(false)}
+			>
 				Save Contact
 			</Button>
 		</ScreenWrapper>

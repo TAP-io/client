@@ -1,9 +1,14 @@
 import React, { useEffect } from "react";
-import { Container, Text } from "../core";
+import { Button, Container, Text } from "../core";
+import * as Linking from "expo-linking";
+import { Share } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 export default function DeepLinking() {
+	const navigation = useNavigation();
 	function handleDeepLink(event) {
 		let data = Linking.parse(event.url);
+		console.log({ data });
 		if (data.scheme === "https") {
 			if (data.path) {
 				var params = data.path.split("/");
@@ -55,5 +60,23 @@ export default function DeepLinking() {
 		addLinkingListener();
 	}, []);
 
-	return <Container>{/* <Text>Deep Linking</Text> */}</Container>;
+	return (
+		<Container>
+			<Button
+				onPress={() => {
+					Share.share({
+						url: Linking.createURL("/contact", {
+							queryParams: {
+								address: "a",
+								name: "sam",
+							},
+						}),
+					});
+				}}
+			>
+				Link!
+			</Button>
+			{/* <Text>Deep Linking</Text> */}
+		</Container>
+	);
 }

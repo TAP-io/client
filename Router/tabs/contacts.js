@@ -6,10 +6,11 @@ const Stack = createNativeStackNavigator();
 export default function ContactsTab() {
 	return (
 		<Stack.Navigator
-			initialRouteName="contacts"
-			screenOptions={{ headerShown: false }}>
-			<Stack.Screen name="contacts" component={Contacts} />
-			<Stack.Screen name="new-contact" component={NewContact} />
+			initialRouteName='contacts'
+			screenOptions={{ headerShown: false }}
+		>
+			<Stack.Screen name='contacts' component={Contacts} />
+			<Stack.Screen name='new-contact' component={NewContact} />
 		</Stack.Navigator>
 	);
 }
