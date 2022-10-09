@@ -45,10 +45,9 @@ const style = StyleSheet.create({
 });
 
 export default function TabNavigator() {
-	const { address, setAddress, setName } = useContext(Context);
+	const { address, setAddress, setName, setIsSpanish } = useContext(Context);
 
 	async function checkLogin() {
-		console.log("What");
 		setAddress("");
 		setName("");
 
@@ -64,9 +63,17 @@ export default function TabNavigator() {
 			setName(tempName);
 		}
 	}
-
+	async function checkLanguage() {
+		let tempIsSpanish = await AsyncStorage.getItem("@isSpanish");
+		if (tempIsSpanish === "true") {
+			setIsSpanish(true);
+		} else {
+			setIsSpanish(false);
+		}
+	}
 	useEffect(() => {
 		checkLogin();
+		checkLanguage();
 	}, []);
 
 	function ContactIcon({ focused }) {
