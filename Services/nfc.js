@@ -75,7 +75,7 @@ export async function readMifare() {
 	return mifarePages;
 }
 
-export async function readTagCopy() {
+export async function readTagCopyMifare() {
 	let tag = null;
 
 	try {
@@ -84,6 +84,28 @@ export async function readTagCopy() {
 		tag = await NfcManager.getTag();
 		tag.ndefStatus = await NfcManager.ndefHandler.getNdefStatus();
 
+		if (Platform.OS === "ios") {
+			await NfcManager.setAlertMessageIOS("Success");
+		}
+	} catch (ex) {
+		// for tag reading, we don't actually need to show any error
+		console.log(ex);
+	} finally {
+		NfcManager.cancelTechnologyRequest();
+	}
+	Alert.alert(tag);
+	return tag;
+}
+export async function readTagCopy() {
+	let tag = null;
+
+	try {
+		await NfcManager.requestTechnology([NfcTech.Ndef]);
+
+		tag = await NfcManager.getTag();
+		console.log({ tag });
+		tag.ndefStatus = await NfcManager.ndefHandler.getNdefStatus();
+		console.log(tag.ndefStatus);
 		if (Platform.OS === "ios") {
 			await NfcManager.setAlertMessageIOS("Success");
 		}
