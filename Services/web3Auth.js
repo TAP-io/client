@@ -49,19 +49,23 @@ export default function LoginButton() {
 
 	const login = async () => {
 		try {
+			console.log("here");
 			const state = await getWeb3AuthState();
+			console.log("just fetched state");
+			console.log(state.userInfo);
+
 			setKey(state.privKey || "no key");
 			setUserInfo(state);
-
+			console.log("now here");
 			const provider = new ethers.providers.InfuraProvider(
 				"maticmum",
 				"85dd1f2ff5714888b2ad407c14147db5"
 			);
 			// Add the keys back in
 			const signer = new ethers.Wallet(key, provider);
-			await AsyncStorage.setItem("@priv_key", state.privKey);
+			console.log(state.privKey, signer.address, state.userInfo.name);
+			await AsyncStorage.setItem("@priv_key", "0x" + state.privKey);
 			await AsyncStorage.setItem("@address", signer.address);
-			console.log(state.userInfo);
 			if (state.userInfo.name) {
 				await AsyncStorage.setItem("@name", state.userInfo.name);
 			}
@@ -74,37 +78,15 @@ export default function LoginButton() {
 		}
 	};
 	return (
-		<View style={styles.container}>
-			{/* <Text>Address: {address}</Text>
-			{key !== "" ? <Text>Key: {key}</Text> : null}
-			{userInfo !== null ? (
-				<Text>UserInfo: {JSON.stringify(userInfo)}</Text>
-			) : null}
-			{errorMsg !== "" ? <Text>Error: {errorMsg}</Text> : null}
-			<Text>Linking URL: {resolvedRedirectUrl}</Text> */}
+		<>
 			<Button
 				onPress={login}
 				marginB={5}
 				marginT={10}
 				variant="contained"
-				isFullWidth>
-				Login with Socials
+				leftIcon={<Icon name="google" type="MaterialCommunity" primaryDark />}>
+				Login with Google
 			</Button>
-
-			<Container row justifyCenter>
-				<Icon name="google" type="MaterialCommunity" secondary />
-			</Container>
-
-			<StatusBar style="auto" />
-		</View>
+		</>
 	);
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: "#fff",
-		alignItems: "center",
-		justifyContent: "center",
-	},
-});

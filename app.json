@@ -1,33 +1,67 @@
 {
-  "expo": {
-    "name": "tap-client",
-    "slug": "tap-client",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    }
-  }
+	"expo": {
+		"name": "tap-client",
+		"slug": "tap-client",
+		"version": "1.0.0",
+		"orientation": "portrait",
+		"icon": "./assets/icon.png",
+		"userInterfaceStyle": "light",
+		"splash": {
+			"image": "./assets/splash.png",
+			"resizeMode": "contain",
+			"backgroundColor": "#ffffff"
+		},
+		"updates": {
+			"fallbackToCacheTimeout": 0
+		},
+		"assetBundlePatterns": ["**/*"],
+		"ios": {
+			"supportsTablet": true,
+			"userInterfaceStyle": "automatic",
+			"bundleIdentifier": "com.tap.tapio",
+			"infoPlist": {
+				"NSCameraUsageDescription": "This app uses the camera to upload images for group pics and profile pics and scanning QR codes.",
+				"NSPhotoLibraryUsageDescription": "Allow access to photos to upload photos from your library for group pics and profile pics.",
+				"NSPhotoLibraryAddUsageDescription": "Quae would like to save photos to your library to share poll results.",
+				"NSContactsUsageDescription": "This app uses your contacts to show you who is already on our platform for you to support and for you to invite. We do not store your contacts anywhere.",
+				"UIRequiresFullScreen": true
+			},
+			"googleServicesFile": "./GoogleService-Info.plist",
+			"associatedDomains": ["applinks:www.tapme.contact"]
+		},
+		"android": {
+			"useNextNotificationsApi": true,
+			"adaptiveIcon": {
+				"foregroundImage": "./assets/adaptive-icon.png",
+				"backgroundColor": "#FFFFFF"
+			},
+			"package": "com.tap.tapio",
+			"userInterfaceStyle": "automatic",
+			"versionCode": 1,
+			"googleServicesFile": "./google-services.json",
+			"intentFilters": [
+				{
+					"action": "VIEW",
+					"autoVerify": true,
+					"data": [
+						{
+							"scheme": "https",
+							"host": "www.tapme.contact",
+							"pathPrefix": "/contact"
+						},
+						{
+							"scheme": "https",
+							"host": "www.tapme.contact",
+							"pathPrefix": "/transaction"
+						}
+					],
+					"category": ["BROWSABLE", "DEFAULT"]
+				}
+			]
+		},
+
+		"web": {
+			"favicon": "./assets/favicon.png"
+		}
+	}
 }

@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import Login from "../components/auth/loginMethods";
 import { Container, Text } from "../components/core";
 import ScreenWrapper from "../components/core/screenWrapper";
 import DeepLinking from "../components/linking/DeepLinking";
 import TransactionCard from "../components/transaction/transactionCard";
+import { Context } from "../Providers/provider";
 import { GlobalStyles } from "../styles/styles";
 
 export default function Home() {
+	const { address } = useContext(Context);
 	let transactions = [
 		{
 			from: "Sam",
@@ -32,6 +35,7 @@ export default function Home() {
 	return (
 		<ScreenWrapper scrollEnabled>
 			<DeepLinking />
+			{/* {address === "" && <Login />} */}
 			<Container style={GlobalStyles.pageHeader}>
 				<Text title primaryDark>
 					What's Tappin'?

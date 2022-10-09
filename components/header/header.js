@@ -5,6 +5,7 @@ import Icon from "../core/icon";
 import AccountModal from "../modals/accountModal";
 import ProfileBadge from "./profileBadge";
 import { Platform, SafeAreaView } from "react-native";
+import { Colors } from "../../styles/styles";
 
 export default function Header({ goBack }) {
 	const [modalVisible, setModalVisible] = useState(false);
@@ -30,11 +31,19 @@ export default function Header({ goBack }) {
 						</Container>
 					) : (
 						<Container
+							style={{
+								backgroundColor: Colors.primaryDark,
+								padding: 2,
+								borderRadius: "50%",
+							}}
 							// todo: this does not work on any tab except for home tab
-							onPress={() => {
-								navigation.toggleDrawer();
-							}}>
-							<Icon name="menu" lg />
+							onPress={() => {}}>
+							<Icon
+								name="contactless-payment"
+								primary
+								type={"MaterialCommunity"}
+								lg
+							/>
 						</Container>
 					)}
 

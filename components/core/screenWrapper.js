@@ -1,10 +1,12 @@
 // File: Reusable loading wrapper
 // Default
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
 // Theming
 // Libraries
 import { RefreshControl, SafeAreaView, ScrollView, View } from "react-native";
+import { Context } from "../../Providers/provider";
 import { Colors, Dim } from "../../styles/styles";
+import Login from "../auth/loginMethods";
 import Header from "../header/header";
 import LoadingWrapper from "./loadingWrapper";
 export default function ScreenWrapper({
@@ -17,6 +19,7 @@ export default function ScreenWrapper({
 	paddingY,
 	goBack,
 }) {
+	const { address } = useContext(Context);
 	const [refreshing, setRefreshing] = useState(false);
 
 	const isCloseToBottom = ({

@@ -2,16 +2,15 @@ import { useMemo, useState } from "react";
 
 const AllData = () => {
 	const [address, setAddress] = useState("");
-	const [loggedIn, setLoggedIn] = useState(false);
-
+	const [name, setName] = useState("");
 	const provider = useMemo(
 		() => ({
-			loggedIn,
-			setLoggedIn,
 			address,
 			setAddress,
+			name,
+			setName,
 		}),
-		[loggedIn, setLoggedIn, address, setAddress]
+		[address, setAddress, name, setName]
 	);
 	return provider;
 };

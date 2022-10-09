@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Container, Icon, Text } from "../core";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Context } from "../../Providers/provider";
 
 export default function ProfileBadge({ setModalVisible }) {
+	const { address } = useContext(Context);
 	const [name, setName] = useState("");
 	async function getName() {
 		let tempName = await AsyncStorage.getItem("@name");
@@ -15,7 +17,7 @@ export default function ProfileBadge({ setModalVisible }) {
 	}
 	useEffect(() => {
 		getName();
-	}, []);
+	}, [address]);
 
 	return (
 		<Container

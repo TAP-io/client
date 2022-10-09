@@ -1,13 +1,17 @@
-import { useRoute } from "@react-navigation/native";
-import React from "react";
+import React, { useContext } from "react";
+import { View } from "react-native";
+import Login from "../components/auth/loginMethods";
 import { Container, Icon, ScreenWrapper, Text } from "../components/core";
 import ScanImage from "../components/transaction/scanImage";
 import TransactionMenu from "../components/transaction/transactMenu";
+import { Context } from "../Providers/provider";
 import { Colors, GlobalStyles } from "../styles/styles";
 
 export default function Transact() {
+	const { address } = useContext(Context);
 	return (
 		<ScreenWrapper>
+			{/* {address === "" && <Login />} */}
 			<Container style={GlobalStyles.pageHeader}>
 				<Text title>Waiting To Read Scan</Text>
 			</Container>
